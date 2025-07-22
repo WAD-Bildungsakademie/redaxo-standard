@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/web/redaxo/src/addons/cke5/data.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/web/redaxo/src/addons/global_settings/_install.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/web/redaxo/src/addons/global_settings/uninstall.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/web/redaxo/src/addons/structure/plugins/version/uninstall.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/web/redaxo/src/addons/users/uninstall.sql" dialect="GenericSQL" />
+  </component>
+</project>

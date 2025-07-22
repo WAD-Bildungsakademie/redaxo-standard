@@ -1,0 +1,124 @@
+<?php
+$v = "2507221900";
+$article = rex_article::getCurrent();
+$isStartArticle = $article->getId() === rex_article::getSiteStartArticleId();
+$startArticleSlices = rex_article_slice::getSlicesForArticle(rex_article::getSiteStartArticle()->getId());
+$articleSlices = rex_article_slice::getSlicesForArticle($article->getId());
+$bodyClass = "";
+if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
+    $bodyClass .= "head-space";
+}
+$cookieSettings = new BootstrapCookieConsentSettings();
+?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <base href="/">
+    <title>WAD – Studio Berlin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <script src="https://cdn.jsdelivr.net/npm/es-module-shims@1.8.3/dist/es-module-shims.min.js"></script>
+    <link rel="stylesheet" href="assets/local/styles/screen.css?v=<?= $v ?>"/>
+    <!-- importmap -->
+    <script type="importmap">
+        {
+            "imports": {
+                "cm-web-modules/": "/node_modules/cm-web-modules/"
+            }
+        }
+    </script>
+</head>
+<body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
+<header>
+    <nav id="nav-main" class="navbar navbar-light fixed-top navbar-expand-xl">
+        <div class="container-fluid max-width-xxl">
+            <a class="navbar-brand" href="/#top">
+                <img id="logo" src="/assets/local/images/soernzig-logo-1.svg" alt="">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <?php foreach ($startArticleSlices as $slice) {
+                        if ($slice->isOnline() && $slice->getValue(9)) {
+                            $id = ShTools::stringToHtmlId($slice->getValue(9));
+                            ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#<?= $id ?>"><?= $slice->getValue(9) ?></a>
+                            </li>
+                        <?php }
+                    } ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    REX_ARTICLE[]
+</main>
+<!-- Footer-->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container-fluid max-width-xxl mx-auto">
+            <div class="">
+                <div class="row align-items-center">
+                    <div class="col-md-auto pb-4 pb-md-0">
+                        <?= rex_global_settings::getValue('address'); ?>
+                    </div>
+                    <div class="col-md text-md-end">
+                        <?php
+                        $articles = rex_article::getRootArticles(true);
+                        foreach ($articles as $serviceArticle) {
+                            if ($serviceArticle->isSiteStartArticle()) {
+                                continue;
+                            }
+                            ?>
+                            <a class="text-decoration-none me-3 text-nowrap"
+                               href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
+                        <?php } ?>
+                        <span onclick="window.cookieSettings.showDialog()" role="button"
+                              class="text-nowrap me-3">Cookie-Einstellungen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container-fluid">
+            <div class="max-width-xxl mx-auto">
+                <div class="row">
+                    <div class="col-md-auto opacity-75">&copy; Landgasthof Sörnzig <?= date("Y") ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<?php
+$articleImpressum = rex_article::get(rex_global_settings::getValue("article_impressum"));
+$articleDatenschutz = rex_article::get(rex_global_settings::getValue("article_datenschutz"));
+$metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_banner");
+?>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="node_modules/bootstrap-cookie-consent-settings/src/bootstrap-cookie-consent-settings.js"></script>
+<script>
+    window.cookieSettings = new BootstrapCookieConsentSettings({
+        privacyPolicyUrl: "<?= $articleDatenschutz ? $articleDatenschutz->getUrl() : "" ?>",
+        legalNoticeUrl: "<?= $articleImpressum ? $articleImpressum->getUrl() : "" ?>",
+        autoShowModal: <?= $metaHideCookieBanner ? "false" : "true" ?>,
+        categories: ["necessary", "maps"],
+        lang: "de",
+        postSelectionCallback: function () {
+            location.reload() // reload after selection
+        }
+    })
+</script>
+<script type="module">
+    import {Project} from "/assets/local/scripts/Project.js"
+
+    window.project = new Project()
+</script>
+</body>
+</html>
