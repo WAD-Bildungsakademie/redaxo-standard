@@ -112,6 +112,10 @@ function cke5_init(element) {
         }
 
         if (ckeditors[unique_id] === undefined) {
+            options = {
+                licenseKey: "GPL",
+                ...options
+            }
             // init editor
             ClassicEditor.create(document.querySelector('#' + unique_id), options)
                 .then(editor => {
