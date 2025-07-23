@@ -1,3 +1,9 @@
-body {
-
-}
+@import "fonts"; // load additional web fonts
+@import "colors"; // set values for the colors
+@import "variables"; // set values for further bootstrap variables
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss"; // include bootstrap
+@import "utils"; // my own utils, small helper classes, mixins
+@import "typography"; // set the font-family, font-size, line-height, etc.
+@import "header"; // css for the navigation and header
+@import "footer"; // css for the page footer
+@import "modules"; // one scss file for every "block" (aka section or module) in your layout or CMS

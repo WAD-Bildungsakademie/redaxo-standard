@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/web/redaxo/src/addons/cke5/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/redaxo/src/addons/mform/lib" isTestSource="false" packagePrefix="FriendsOfRedaxo" />
+      <sourceFolder url="file://$MODULE_DIR$/web/redaxo/src/addons/mform/lib/MForm/Utils" isTestSource="false" packagePrefix="FriendsOfRedaxo" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

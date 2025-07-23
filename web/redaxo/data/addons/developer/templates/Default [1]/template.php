@@ -19,7 +19,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
     <script src="https://cdn.jsdelivr.net/npm/es-module-shims@1.8.3/dist/es-module-shims.min.js"></script>
-    <link rel="stylesheet" href="assets/local/styles/screen.css?v=<?= $v ?>"/>
+    <link rel="stylesheet" href="/assets/local/styles/screen.css?v=<?= $v ?>"/>
     <!-- importmap -->
     <script type="importmap">
         {
@@ -34,7 +34,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <nav id="nav-main" class="navbar navbar-light fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
             <a class="navbar-brand" href="/#top">
-                <img id="logo" src="/assets/local/images/soernzig-logo-1.svg" alt="">
+                <img id="logo" src="/assets/local/images/logo.svg" alt="">
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,23 +90,23 @@ $cookieSettings = new BootstrapCookieConsentSettings();
         <div class="container-fluid">
             <div class="max-width-xxl mx-auto">
                 <div class="row">
-                    <div class="col-md-auto opacity-75">&copy; Landgasthof Sörnzig <?= date("Y") ?></div>
+                    <div class="col-md-auto opacity-75">&copy; redaxo-standard-replace <?= date("Y") ?></div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 <?php
-$articleImpressum = rex_article::get(rex_global_settings::getValue("article_impressum"));
-$articleDatenschutz = rex_article::get(rex_global_settings::getValue("article_datenschutz"));
+$articleLegalNotice = rex_article::get(rex_global_settings::getValue("article_legal_notice"));
+$articlePrivacyPolicy = rex_article::get(rex_global_settings::getValue("article_privacy_policy"));
 $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_banner");
 ?>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/bootstrap-cookie-consent-settings/src/bootstrap-cookie-consent-settings.js"></script>
 <script>
     window.cookieSettings = new BootstrapCookieConsentSettings({
-        privacyPolicyUrl: "<?= $articleDatenschutz ? $articleDatenschutz->getUrl() : "" ?>",
-        legalNoticeUrl: "<?= $articleImpressum ? $articleImpressum->getUrl() : "" ?>",
+        privacyPolicyUrl: "<?= $articlePrivacyPolicy ? $articlePrivacyPolicy->getUrl() : "" ?>",
+        legalNoticeUrl: "<?= $articleLegalNotice ? $articleLegalNotice->getUrl() : "" ?>",
         autoShowModal: <?= $metaHideCookieBanner ? "false" : "true" ?>,
         categories: ["necessary", "maps"],
         lang: "de",
@@ -116,7 +116,7 @@ $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_b
     })
 </script>
 <script type="module">
-    import {Project} from "/assets/local/scripts/Project.js"
+    import {Project} from "/assets/local/src/Project.js"
 
     window.project = new Project()
 </script>

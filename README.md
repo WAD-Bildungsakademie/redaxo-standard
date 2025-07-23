@@ -11,3 +11,22 @@ genutzt werden kann, um möglichst effizient neue Websites zu erstellen.
 
 - Redaxo Updaten
 - npm updaten (ncu -u)
+
+## Necessary global settings
+
+- article_legal_notice
+- article_privacy_policy
+
+## Necessary meta data
+
+- art_hide_cookie_banner
+
+## Fonts
+
+- Roboto
+
+| Font Weight | CSS Value | Typical Use Case                 |
+| ----------- | --------- | -------------------------------- |
+| **Normal**  | `400`     | Body text, default weight        |
+| **Bold**    | `700`     | Headings, emphasis               |
+| **Light**   | `300`     | Subtle text, large display fonts |
