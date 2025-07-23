@@ -1,15 +1,20 @@
 <?php
 /**
  * Author: Stefan Haack (https://shaack.com)
- * Date: 2024-08-15
+ * Date: 2024-08-02
  */
 /** @var rex_article_slice $slice */
 $slice = $this->getCurrentSlice();
-$text = $slice->getValue(3);
+$navigation = $slice->getValue(9);
 $bgGray = $slice->getValue(8);
+$id = ShTools::stringToHtmlId($navigation);
 ?>
-<section class="module module-216e58 <?= $bgGray ? "bg-gray" : "" ?>">
+<section class="module module-0805ef <?= $bgGray ? "bg-gray" : "" ?>">
+    <div class="anchor" <?= $navigation ? "id='" . $id . "'" : "" ?>></div>
     <div class="container-fluid max-width-xl">
-        <div class="max-width-md mx-auto"><?= $text ?></div>
+        <h2><?= $slice->getValue(1) ?></h2>
+        <div class="subheadline">
+            <?= $slice->getValue(2) ?>
+        </div>
     </div>
 </section>

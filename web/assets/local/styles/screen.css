@@ -12402,8 +12402,9 @@ header #nav-main {
 }
 .module-7bba0e .image .text .text-large {
   color: #e9ecef;
-  font-size: 510%;
-  font-family: "Montserrat", sans-serif;
+  font-size: 480%;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
   margin-bottom: 0.5rem;
   line-height: 1;
   letter-spacing: -0.2rem;
@@ -12411,7 +12412,7 @@ header #nav-main {
 .module-7bba0e .image .text .text-sub {
   color: #adb5bd;
   font-size: 160%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: lighter;
   line-height: 1.3;
 }
