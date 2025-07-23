@@ -23,8 +23,7 @@ genutzt werden kann, um möglichst effizient neue Websites zu erstellen.
 
 ## Fonts
 
-- Roboto
-- Inter
+- [Example page](http://localhost:8080/assets/local/fonts/fonts.html)
 
 ### Font weights
 
