@@ -21,6 +21,12 @@ genutzt werden kann, um möglichst effizient neue Websites zu erstellen.
 
 - art_hide_cookie_banner
 
+## Media
+
+- large_16_9: 1920 x 1080 (Standard-Hero, Full HD)
+- medium_4_3: 1024 x 768
+- medium_16_9: 1024 x 576
+
 ## Fonts
 
 - [Example page](http://localhost:8080/assets/local/fonts/fonts.html)

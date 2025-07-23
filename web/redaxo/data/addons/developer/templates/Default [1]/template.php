@@ -20,7 +20,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <meta name="description" content=""/>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
     <link rel="manifest" href="/favicons/manifest.json">
@@ -39,7 +39,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
 <header>
-    <nav id="nav-main" class="navbar navbar-light fixed-top navbar-expand-xl">
+    <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
             <a class="navbar-brand" href="/#top">
                 <img id="logo" src="/assets/local/images/logo.svg" alt="">
@@ -50,6 +50,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    <?php /* One pager navigation */ ?>
                     <?php foreach ($startArticleSlices as $slice) {
                         if ($slice->isOnline() && $slice->getValue(9)) {
                             $id = ShTools::stringToHtmlId($slice->getValue(9));
@@ -59,6 +60,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
                             </li>
                         <?php }
                     } ?>
+                    <?php /* TODO Multi page navigation */ ?>
                 </ul>
             </div>
         </div>
