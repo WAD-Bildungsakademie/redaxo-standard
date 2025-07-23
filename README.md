@@ -33,3 +33,7 @@ genutzt werden kann, um möglichst effizient neue Websites zu erstellen.
 | **Normal**  | `400`     | Body text, default weight        |
 | **Bold**    | `700`     | Headings, emphasis               |
 
+## Online Tools
+
+- https://toolcool.org/random-favicon-generator/
+

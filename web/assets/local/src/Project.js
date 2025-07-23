@@ -4,7 +4,7 @@
  */
 export class Project {
     constructor() {
-        console.log("redaxo-standard-replace")
+        console.log("redaxo-standard-replace project specific JS in `Project.js`")
     }
 
 }
