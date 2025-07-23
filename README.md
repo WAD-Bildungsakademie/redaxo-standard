@@ -24,9 +24,13 @@ genutzt werden kann, um möglichst effizient neue Websites zu erstellen.
 ## Fonts
 
 - Roboto
+- Inter
+
+### Font weights
 
 | Font Weight | CSS Value | Typical Use Case                 |
 | ----------- | --------- | -------------------------------- |
+| **Light**   | `300`     | Subtle text, large display fonts |
 | **Normal**  | `400`     | Body text, default weight        |
 | **Bold**    | `700`     | Headings, emphasis               |
-| **Light**   | `300`     | Subtle text, large display fonts |
+
