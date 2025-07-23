@@ -1,0 +1,16 @@
+.inputWrapper {
+  position: relative;
+}
+.inputWrapper .inputElement {
+  margin-right: 50px;
+}
+.inputWrapper .add, .inputWrapper .remove {
+  position: absolute;
+  top: 25px;
+  right: 0;
+}
+.inputWrapper .add {
+  right: 25px;
+}
+
+/*# sourceMappingURL=jq.multiinput.css.map */

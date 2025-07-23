@@ -13,8 +13,8 @@ if($slice->getMedia(1)) {
 }
 ?>
 <section class="module module-7bba0e">
-    <div class="image shadow-sm" style="background-image: url(<?= $url ?>)">
-        <div class="container-fluid max-width-xl mx-auto">
+    <div class="image" style="background-image: url(<?= $url ?>)">
+        <div class="container-fluid max-width-xxl mx-auto">
             <div class="text px-1">
                 <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
                 <div class="text-sub"><?= $slice->getValue(3) ?></div>

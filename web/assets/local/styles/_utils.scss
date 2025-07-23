@@ -1,0 +1,28 @@
+/**
+ * Author: Stefan Haack (https://shaack.com)
+ * Date: 2023-04-13
+ */
+
+body * {
+  // outline: 1px rgba(0, 0, 0, 0.05) solid;
+}
+
+@each $name, $value in $grid-breakpoints {
+  .max-width-#{$name} {
+    max-width: $value;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.bg-image-center {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-gray {
+  background-color: $gray-300;
+}
