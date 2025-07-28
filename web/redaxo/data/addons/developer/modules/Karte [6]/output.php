@@ -1,6 +1,6 @@
 <section class="module module-e5c406">
     <?php
-    $articleDatenschutz = rex_article::get(rex_global_settings::getValue("article_datenschutz"));
+    $articleDatenschutz = rex_article::get(rex_global_settings::getValue("article_privacy_policy"));
     $cookieConsentSettings = new BootstrapCookieConsentSettings();
     $showMaps = $cookieConsentSettings->getSetting("maps") || rex_post("showMaps", "bool");
     $showAllMaps = rex_post("showAllMaps", "bool");

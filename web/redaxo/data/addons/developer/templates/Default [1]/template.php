@@ -15,7 +15,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
 <head>
     <meta charset="utf-8"/>
     <base href="/">
-    <title>redaxo-standard-replace</title>
+    <title>rsreplace</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
 
@@ -32,7 +32,9 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <script type="importmap">
         {
             "imports": {
-                "cm-web-modules/": "/node_modules/cm-web-modules/"
+                "bootstrap-lightbox-gallery/": "/node_modules/bootstrap-lightbox-gallery/",
+                "cm-web-modules/": "/node_modules/cm-web-modules/",
+                "bootstrap-show-modal/": "/node_modules/bootstrap-show-modal/"
             }
         }
     </script>
@@ -42,7 +44,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
             <a class="navbar-brand" href="/#top">
-                <img id="logo" src="/assets/local/images/logo.svg" alt="">
+                <!-- <img id="logo" src="/assets/local/images/logo.svg" alt=""> -->
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +102,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
         <div class="container-fluid">
             <div class="max-width-xxl mx-auto">
                 <div class="row">
-                    <div class="col-md-auto opacity-75">&copy; redaxo-standard-replace <?= date("Y") ?></div>
+                    <div class="col-md-auto opacity-75">&copy; rsreplace <?= date("Y") ?></div>
                 </div>
             </div>
         </div>

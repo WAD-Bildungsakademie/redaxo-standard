@@ -27,9 +27,10 @@
       }
       .text-sub {
         color: $gray-500;
-        font-size: 160%;
-        font-family: $font-family-base;
-        font-weight: lighter;
+        font-size: 200%;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        font-style: italic;
         line-height: 1.3;
       }
       @include media-breakpoint-down("lg") {
