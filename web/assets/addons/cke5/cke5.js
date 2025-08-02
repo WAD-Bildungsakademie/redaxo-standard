@@ -112,8 +112,9 @@ function cke5_init(element) {
         }
 
         if (ckeditors[unique_id] === undefined) {
+            // shaack patch "license-key-missing"
             options = {
-                licenseKey: "GPL",
+                "licenseKey": "GPL",
                 ...options
             }
             // init editor
