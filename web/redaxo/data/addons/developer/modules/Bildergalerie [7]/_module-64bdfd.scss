@@ -1,0 +1,15 @@
+.module-64bdfd {
+  .gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-row {
+    width: 100%;
+  }
+
+  .gallery-item {
+    min-width: 0; /* Prevents flex items from overflowing */
+  }
+}

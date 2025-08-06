@@ -4,7 +4,8 @@
  * Author: Stefan Haack (https://shaack.com)
  * License: MIT
  */
-class ShRexMediaManagerFile {
+class ShRexMediaManagerFile
+{
 
     private string $fileName;
     private rex_media $media;
@@ -20,7 +21,7 @@ class ShRexMediaManagerFile {
             $this->fileName = $fileName;
         }
         $media = rex_media::get($this->fileName);
-        if(!$media) {
+        if (!$media) {
             $this->fileName = rex_global_settings::getValue("placeholderImage");
             $media = rex_media::get($this->fileName);
             $this->isPlaceholder = true;
@@ -28,27 +29,33 @@ class ShRexMediaManagerFile {
         $this->media = $media;
     }
 
-    function getMedia() : rex_media {
+    function getMedia(): rex_media
+    {
         return $this->media;
     }
 
-    function getTitle() : string {
+    function getTitle(): string
+    {
         return $this->media->getTitle();
     }
 
-    function getImageSrc($type = "default") : string {
-        return  "/index.php?rex_media_type={$type}&rex_media_file={$this->fileName}";
+    function getImageSrc($type = "default"): string
+    {
+        return "/index.php?rex_media_type={$type}&rex_media_file={$this->fileName}";
     }
 
-    function getFileUrl() : string {
-        return  "/media/{$this->fileName}";
+    function getFileUrl(): string
+    {
+        return "/media/{$this->fileName}";
     }
 
-    function getFileName() : string {
+    function getFileName(): string
+    {
         return $this->fileName;
     }
 
-    function isPlaceholder() : bool {
+    function isPlaceholder(): bool
+    {
         return $this->isPlaceholder;
     }
 
@@ -57,14 +64,19 @@ class ShRexMediaManagerFile {
         return $this->media->getValue($string);
     }
 
-    public function getFormattedSize()
+    public function getFormattedSize(): string
     {
         $size = $this->media->getSize();
-        if($size > 1024 * 1024) {
+        if ($size > 1024 * 1024) {
             return number_format($size / 1024 / 1024, 2, ",", ".") . " MB";
         } else {
             return number_format($size / 1024, 2, ",", ".") . " KB";
         }
+    }
+
+    public function getRatio(): float
+    {
+        return $this->media->getWidth() / $this->media->getHeight();
     }
 
 }
