@@ -7,5 +7,5 @@ mkdir -p ./volumes/log/mysql
 mkdir -p ./volumes/log/apache2
 mkdir -p ./volumes/log/php
 
-podman compose --env-file compose.env up --build --remove-orphans
+podman compose --env-file compose.env up --build
 
