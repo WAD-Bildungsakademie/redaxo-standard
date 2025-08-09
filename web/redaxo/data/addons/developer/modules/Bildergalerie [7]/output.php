@@ -90,13 +90,3 @@ if (!$galleryScript) {
             })
     </script>
 <?php } ?>
-<!--
-<a href="https://via.placeholder.com/1024x768" data-gallery="gallery-1" class="d-block">
-    <figure>
-        <img src="https://via.placeholder.com/1024x768" class="img-fluid" alt="Lorem ipsum dolor sit amet"/>
-        <figcaption class="visually-hidden">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </figcaption>
-    </figure>
-</a>
--->
