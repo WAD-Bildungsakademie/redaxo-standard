@@ -1,0 +1,63 @@
+/**
+ * Author: Stefan Haack (https://shaack.com)
+ * Date: 2024-07-29
+ */
+
+.module-7bc9e6 {
+  padding-top: 0;
+  padding-bottom: 0;
+  .image {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    .text {
+      margin-top: 33vh;
+      .text-large {
+        color: $gray-200;
+        font-size: 480%;
+        // text-transform: uppercase;
+        font-family: "Inter", sans-serif;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+        letter-spacing: -0.2rem;
+      }
+      .text-sub {
+        color: $gray-500;
+        font-size: 200%;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        font-style: italic;
+        line-height: 1.3;
+      }
+      @include media-breakpoint-down("lg") {
+        .text-large {
+          font-size: 420%;
+          letter-spacing: -0.1rem;
+        }
+        .text-sub {
+          font-size: 180%;
+        }
+      }
+      @include media-breakpoint-down("md") {
+        .text-large {
+            font-size: 380%;
+            letter-spacing: -0.1rem;
+        }
+        .text-sub {
+            font-size: 180%;
+        }
+      }
+    }
+    .skyline {
+      width: calc(400px + 20%);
+      max-width: 98%;
+      position: absolute;
+      right: 1%;
+      bottom: 7%;
+    }
+  }
+}

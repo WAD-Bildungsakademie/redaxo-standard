@@ -17,7 +17,7 @@ if($slice->getMedia(1)) {
         <div class="container-fluid max-width-xxl mx-auto">
             <div class="text px-1">
                 <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
-                <div class="text-sub"><?= $slice->getValue(3) ?></div>
+                <div class="text-small"><?= $slice->getValue(3) ?></div>
             </div>
         </div>
     </div>

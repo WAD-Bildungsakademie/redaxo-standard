@@ -15,25 +15,21 @@ foreach ($images as $image) {
 }
 
 if (!function_exists('calculateImageWidths')) {
-
     function calculateImageWidths(array $images, int $containerWidth = 1200, int $targetHeight = 300): array
     {
         $widths = [];
         $totalRatioSum = 0;
-
         // Calculate sum of ratios for the row
         foreach ($images as $image) {
             $ratio = $image->getRatio();
             $totalRatioSum += $ratio;
         }
-
         // Calculate individual widths based on ratios
         foreach ($images as $index => $image) {
             $ratio = $image->getRatio();
             // Width = (individual ratio / sum of ratios) * container width
             $widths[$index] = round(($ratio / $totalRatioSum) * $containerWidth);
         }
-
         return $widths;
     }
 
@@ -41,7 +37,6 @@ if (!function_exists('calculateImageWidths')) {
     {
         $widths = calculateImageWidths($images);
         $output = '<div class="gallery-row d-flex gap-2 mb-2">';
-
         foreach ($images as $index => $image) {
             $width = $widths[$index];
             $output .= sprintf(
@@ -54,13 +49,12 @@ if (!function_exists('calculateImageWidths')) {
                 </a>
             </div>',
                 $width,
-                $image->getImageSrc("large"),
-                $image->getImageSrc("medium"),
+                $image->getImageSrc("rs_media_xlarge"),
+                $image->getImageSrc("rex_media_medium"),
                 htmlspecialchars($image->getTitle()),
                 htmlspecialchars($image->getTitle())
             );
         }
-
         $output .= '</div>';
         return $output;
     }
@@ -91,7 +85,7 @@ if (!$galleryScript) {
         new LightboxGallery(document.querySelectorAll("[data-gallery='gallery-1']"),
             {
                 id: "gallery-45c11a", // set this, if you have multiple galleries on one page
-                title: "Studio Berlin", // set the name, it will be displayed
+                title: "Bildergalerie", // set the name, it will be displayed
                 theme: "dark" // set to "light", if you want to display the images on light background
             })
     </script>
