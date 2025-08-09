@@ -1,8 +1,8 @@
 <?php
-$v = "2507221900";
+$v = "2508092000";
 $article = rex_article::getCurrent();
 $isStartArticle = $article->getId() === rex_article::getSiteStartArticleId();
-$startArticleSlices = rex_article_slice::getSlicesForArticle(rex_article::getSiteStartArticle()->getId());
+$startArticleSlices = rex_article_slice::getSlicesForArticle(rex_article::getCurrent()->getId());
 $articleSlices = rex_article_slice::getSlicesForArticle($article->getId());
 $bodyClass = "";
 if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
@@ -43,14 +43,14 @@ $cookieSettings = new BootstrapCookieConsentSettings();
 <header>
     <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
-            <a class="navbar-brand" href="/#top">
-                <!-- <img id="logo" src="/assets/local/images/logo.svg" alt=""> -->
+            <a class="navbar-brand" href="#top">
+                LOGO
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <?php /* One pager navigation */ ?>
                     <?php foreach ($startArticleSlices as $slice) {
