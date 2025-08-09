@@ -26,8 +26,8 @@ $buttonLink = $slice->getLink(5);
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-lg-6 p-5">
-                <img class="img-fluid" src="<?= $url ?>" alt=""/>
+            <div class="col-lg-6 p-lg-5 pt-5">
+                <img class="img-fluid rounded-4" src="<?= $url ?>" alt=""/>
             </div>
         </div>
     </div>
