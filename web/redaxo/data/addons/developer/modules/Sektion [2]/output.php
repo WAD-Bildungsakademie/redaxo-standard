@@ -8,13 +8,17 @@ $slice = $this->getCurrentSlice();
 $navigation = $slice->getValue(9);
 $bgGray = $slice->getValue(8);
 $id = ShTools::stringToHtmlId($navigation);
+$headline = $slice->getValue(1);
+$subheadline = $slice->getValue(2);
 ?>
-<section class="module module-0805ef <?= $bgGray ? "bg-gray" : "" ?>">
+<section class="module module-0805ef <?= !$headline ? 'mb-0 pt-0' : '' ?> <?= $bgGray ? "bg-gray" : "" ?>">
     <div class="anchor" <?= $navigation ? "id='" . $id . "'" : "" ?>></div>
     <div class="container-fluid max-width-xl">
-        <h2><?= $slice->getValue(1) ?></h2>
-        <div class="subheadline">
-            <?= $slice->getValue(2) ?>
-        </div>
+        <?php if($headline) { ?>
+            <h2><?= $slice->getValue(1) ?></h2>
+            <div class="subheadline">
+                <?= $slice->getValue(2) ?>
+            </div>
+        <?php } ?>
     </div>
 </section>
