@@ -1,9 +1,55 @@
-header {
+/**
+ * Author: Stefan Haack (https://shaack.com)
+ * Date: 2024-07-23
+ */
 
-  #logo {
-    width: 200px;
-  }
-  #nav-main {
-    background-color: rgba(0, 0, 0, 0.8);
+header {
+  nav.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s;
+    .navbar-brand {
+      img {
+        width: 24rem;
+        max-width: calc(100vw - 7.5rem);
+        transition: width 0.3s;
+      }
+    }
+    .nav-item {
+      padding: 0.5rem 1rem;
+      .nav-link {
+        display: inline;
+        padding: 0;
+        color: $body-color;
+        border-bottom: 2px solid transparent;
+        &:hover {
+          color: $nav-link-hover-color;
+        }
+        &.active {
+          color: $nav-link-hover-color;
+          // add a blue line under the active link
+          border-bottom: 2px solid $nav-link-hover-color;
+        }
+      }
+    }
+    .navbar-collapse {
+      justify-content: end;
+    }
+    @include media-breakpoint-down(xl) {
+      .navbar-collapse {
+        ul {
+          padding: 1rem 0.5rem;
+        }
+      }
+    }
+
+    &.reduce {
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      .navbar-brand {
+        img {
+          width: 16rem;
+        }
+      }
+    }
   }
 }

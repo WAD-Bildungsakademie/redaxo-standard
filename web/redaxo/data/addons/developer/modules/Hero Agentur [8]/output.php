@@ -17,7 +17,7 @@ $buttonLink = $slice->getLink(5);
 <section class="module module-7bc9e6">
     <div class="container-fluid max-width-xxl mx-auto">
         <div class="row align-items-center">
-            <div class="col-lg-6 p-lg-5">
+            <div class="col-lg-6 px-lg-5">
                 <div class="text px-1">
                     <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
                     <div class="text-small"><?= $slice->getValue(3) ?></div>
@@ -26,8 +26,10 @@ $buttonLink = $slice->getLink(5);
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-lg-6 p-lg-5 pt-5">
-                <img class="img-fluid rounded-4 max-width-sm pt-4" src="<?= $url ?>" alt=""/>
+            <div class="col-lg-6 p-lg-5">
+                <div class="max-width-sm mx-auto">
+                    <img class="img-fluid rounded-4" src="<?= $url ?>" alt=""/>
+                </div>
             </div>
         </div>
     </div>

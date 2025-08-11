@@ -1,0 +1,17 @@
+footer {
+  background-color: $primary;
+  color: white;
+  a, [role="button"] {
+    color: white;
+    &:hover {
+      color: lighten($nav-link-hover-color, 20%);
+    }
+  }
+  .footer-top {
+    padding: 2rem 0;
+  }
+  .footer-bottom {
+    padding: 1rem 0;
+    background-color: darken($primary, 5%);
+  }
+}
