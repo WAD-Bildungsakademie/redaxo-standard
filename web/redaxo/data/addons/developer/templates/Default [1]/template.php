@@ -123,7 +123,9 @@ $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_b
         categories: ["necessary", "statistics", "marketing", "maps"],
         lang: "de",
         postSelectionCallback: function () {
-            location.reload() // reload after selection
+            if(window.cookieSettings.getSettings("statistics") || window.cookieSettings.getSettings("marketing") || window.cookieSettings.getSettings("maps")) {
+                location.reload() // reload after selection
+            }
         }
     })
 </script>
