@@ -7,24 +7,54 @@
   padding: 0;
   width: 100vw;
   height: 100svh;
+
   .bg-image {
     height: 100%;
     width: 100%;
     background-size: cover;
     background-position: center;
+
     .text-container {
+      display: flex;
+      align-items: center;
+
       .text {
         h1 {
           color: $c-white;
+          margin-bottom: 0.5rem;
         }
 
         p {
-          color: $c-white;
+          font-size: 150%;
+          color: $c-gray;
         }
       }
     }
   }
-  &.mask-studio {
 
+  &.mask-studio {
+    .mask {
+      background-size: cover;
+      background-position: left center;
+      background-image: url("/assets/local/images/mask-studio.svg");
+    }
+
+    .bg-image .text-container {
+      align-items: end;
+      .text {
+        max-width: 500px;
+        padding-bottom: 4rem;
+
+        h1 {
+          color: $c-black;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 150%;
+          color: $c-gray;
+        }
+      }
+    }
   }
 }

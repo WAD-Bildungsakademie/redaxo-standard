@@ -12572,12 +12572,39 @@ footer .footer-bottom {
   background-size: cover;
   background-position: center;
 }
+.module-7bba0e .bg-image .text-container {
+  display: flex;
+  align-items: center;
+}
 .module-7bba0e .bg-image .text-container .text h1, .module-7bba0e .bg-image .text-container .text .h1 {
   color: #fff;
+  margin-bottom: 0.5rem;
 }
 .module-7bba0e .bg-image .text-container .text p {
-  color: #fff;
+  font-size: 150%;
+  color: #ccc;
 }
+.module-7bba0e.mask-studio .mask {
+  background-size: cover;
+  background-position: left center;
+  background-image: url("/assets/local/images/mask-studio.svg");
+}
+.module-7bba0e.mask-studio .bg-image .text-container {
+  align-items: end;
+}
+.module-7bba0e.mask-studio .bg-image .text-container .text {
+  max-width: 500px;
+  padding-bottom: 4rem;
+}
+.module-7bba0e.mask-studio .bg-image .text-container .text h1, .module-7bba0e.mask-studio .bg-image .text-container .text .h1 {
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+.module-7bba0e.mask-studio .bg-image .text-container .text p {
+  font-size: 150%;
+  color: #ccc;
+}
+
 /**
  * Author: Stefan Haack (https://shaack.com)
  * Date: 2024-07-29
