@@ -11,14 +11,14 @@ if($slice->getMedia(1)) {
     $media = new ShRexMediaManagerFile($slice->getMedia(1));
     $url = $media->getImageSrc("large_4_3");
 }
+$mask = $slice->getValue(6);
 ?>
-<section class="module module-7bba0e">
-    <div class="image" style="background-image: url(<?= $url ?>)">
-        <div class="container-fluid max-width-xxl mx-auto">
-            <div class="text px-1">
-                <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
-                <div class="text-small"><?= $slice->getValue(3) ?></div>
-            </div>
-        </div>
+<h1><?= $slice->getValue(2) ?></h1>
+<p><?= $slice->getValue(3) ?></p>
+<!--
+<section class="module module-7bba0e mask-<?= $mask ?>">
+    <div class="bg-image" style="background-image: url('<?= $url ?>')">
+
     </div>
 </section>
+-->
