@@ -78,7 +78,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
             <div class="">
                 <div class="row align-items-center">
                     <div class="col-md-auto pb-4 pb-md-0">
-                        <?= rex_global_settings::getValue('address'); ?>
+                        <?php // rex_global_settings::getValue('address'); ?>
                     </div>
                     <div class="col-md text-md-end">
                         <?php
@@ -109,8 +109,8 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     </div>
 </footer>
 <?php
-$articleLegalNotice = rex_article::get(rex_global_settings::getValue("article_legal_notice"));
-$articlePrivacyPolicy = rex_article::get(rex_global_settings::getValue("article_privacy_policy"));
+$articleLegalNotice = ShRexArticleService::getLegalNoticeArticle();
+$articlePrivacyPolicy = ShRexArticleService::getPrivacyPolicyArticle();
 $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_banner");
 ?>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>

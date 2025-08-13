@@ -28,6 +28,8 @@ class ShRexMediaManagerFile
         }
         $this->media = $media;
     }
+    
+
 
     function getMedia(): rex_media
     {
@@ -54,6 +56,17 @@ class ShRexMediaManagerFile
         return $this->fileName;
     }
 
+    public static function getFileNameByTitle(string $title, int $parentId = 0): ?string
+    {
+        $sql = rex_sql::factory();
+        $media = $sql->getArray('SELECT filename FROM ' . rex::getTable('media') . ' WHERE title = :title AND category_id = :parent_id LIMIT 1', [
+            ':title' => $title,
+            ':parent_id' => $parentId
+        ]);
+        return $media[0]['filename'] ?? null;
+    }
+
+
     function isPlaceholder(): bool
     {
         return $this->isPlaceholder;
@@ -76,12 +89,35 @@ class ShRexMediaManagerFile
 
     public function getRatio(): float
     {
-        if($this->media->getWidth() == 0 || $this->media->getHeight() == 0) {
+        if ($this->media->getWidth() == 0 || $this->media->getHeight() == 0) {
             error_log("MediaManagerFile: getRatio: width or height is 0");
             return 1;
         } else {
             return $this->media->getWidth() / $this->media->getHeight();
         }
     }
+
+    function mediaBelongsToCurrentDomain(string $filename): bool
+    {
+        $currentHost = rex_yrewrite::getCurrentDomain() ?: '';
+        $domainToCategoryId = [
+            'example-a.tld' => 10, // category id for Site A
+            'example-b.tld' => 20, // category id for Site B
+        ];
+
+        $catIdAllowed = $domainToCategoryId[$currentHost] ?? null;
+        if (!$catIdAllowed) {
+            return false;
+        }
+
+        $sql = rex_sql::factory();
+        $sql->setQuery('SELECT category_id FROM ' . rex::getTable('media') . ' WHERE filename = :f LIMIT 1', [':f' => $filename]);
+        if (!$sql->getRows()) {
+            return false;
+        }
+
+        return (int) $sql->getValue('category_id') === (int) $catIdAllowed;
+    }
+
 
 }
