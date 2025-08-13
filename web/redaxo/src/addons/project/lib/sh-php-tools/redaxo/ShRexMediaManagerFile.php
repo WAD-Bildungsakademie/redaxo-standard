@@ -76,7 +76,12 @@ class ShRexMediaManagerFile
 
     public function getRatio(): float
     {
-        return $this->media->getWidth() / $this->media->getHeight();
+        if($this->media->getWidth() == 0 || $this->media->getHeight() == 0) {
+            error_log("MediaManagerFile: getRatio: width or height is 0");
+            return 1;
+        } else {
+            return $this->media->getWidth() / $this->media->getHeight();
+        }
     }
 
 }

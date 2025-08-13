@@ -58,22 +58,30 @@ if (!function_exists('calculateImageWidths')) {
         $output .= '</div>';
         return $output;
     }
-
-
 }
 ?>
-<section class="module module-64bdfd">
-    <div class="container-fluid max-width-xxl">
-        <div class="gallery-container">
-            <?php
-            // Split images into rows (1-4 images per row)
-            $rows = array_chunk($medias, min($maxImagesPerRow, count($medias)));
-            foreach ($rows as $row): ?>
-                <?= renderGalleryRow($row) ?>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
+    <section class="module module-64bdfd">
+        <?php if (rex::isBackend()) { ?>
+            <div class="d-flex gap-2 flex-wrap">
+                <?php foreach ($medias as $image): ?>
+                    <img src="<?= $image->getImageSrc("rex_media_small") ?>"
+                         alt="<?= htmlspecialchars($image->getTitle()) ?>"
+                         style="height: 120px; object-fit: cover;">
+                <?php endforeach; ?>
+            </div>
+        <?php } else { ?>
+            <div class="container-fluid max-width-xxl">
+                <div class="gallery-container">
+                    <?php
+                    // Split images into rows (1-4 images per row)
+                    $rows = array_chunk($medias, min($maxImagesPerRow, count($medias)));
+                    foreach ($rows as $row): ?>
+                        <?= renderGalleryRow($row) ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php } ?>
+    </section>
 <?php
 global $galleryScript;
 if (!$galleryScript) {
