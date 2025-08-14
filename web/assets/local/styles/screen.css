@@ -12486,6 +12486,7 @@ p {
 
 main {
   margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 /**
@@ -12497,7 +12498,7 @@ header nav.navbar {
   transition: background-color 0.3s;
 }
 header nav.navbar .navbar-brand img {
-  width: 24rem;
+  width: 20rem;
   max-width: calc(100vw - 7.5rem);
   transition: width 0.3s;
 }
@@ -12530,7 +12531,7 @@ header nav.navbar.reduce {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 header nav.navbar.reduce .navbar-brand img {
-  width: 16rem;
+  width: 12rem;
 }
 
 footer {

@@ -9,13 +9,19 @@ if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
     $bodyClass .= "head-space";
 }
 $cookieSettings = new BootstrapCookieConsentSettings();
+$domain = rex_yrewrite::getCurrentDomain();
+$metaInfos = FriendsOfRedaxo\YrewriteMetainfo\Domain::getCurrent();
+$logo = $metaInfos->getValue("logo");
+if($logo) {
+    $logo = new ShRexMediaManagerFile($logo);
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="utf-8"/>
     <base href="/">
-    <title>rsreplace</title>
+    <title><?= $metaInfos->getValue("name") ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
 
@@ -44,7 +50,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
             <a class="navbar-brand" href="#top">
-                <img src="/assets/local/images/logo.svg" alt="Logo" class="logo"/>
+                <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +75,11 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     </nav>
 </header>
 <main>
+    <!--
+    <pre>
+        <?= print_r($domain) ?>
+    </pre>
+    -->
     REX_ARTICLE[]
 </main>
 <!-- Footer-->
@@ -82,7 +93,8 @@ $cookieSettings = new BootstrapCookieConsentSettings();
                     </div>
                     <div class="col-md text-md-end">
                         <?php
-                        $articles = rex_article::getRootArticles(true);
+                        $pflichtseiten = ShRexArticleService::getArticleByName("[ Pflichtseiten ]", $domain->getMountId());
+                        $articles = $pflichtseiten->getCategory()->getChildren();
                         foreach ($articles as $serviceArticle) {
                             if ($serviceArticle->isSiteStartArticle()) {
                                 continue;
@@ -91,8 +103,10 @@ $cookieSettings = new BootstrapCookieConsentSettings();
                             <a class="text-decoration-none me-3 text-nowrap"
                                href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
                         <?php } ?>
+                        <!--
                         <span onclick="window.cookieSettings.showDialog()" role="button"
                               class="text-nowrap me-3">Cookie-Einstellungen</span>
+                        -->
                     </div>
                 </div>
             </div>
@@ -102,7 +116,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
         <div class="container-fluid">
             <div class="max-width-xxl mx-auto">
                 <div class="row">
-                    <div class="col-md-auto opacity-75">&copy; rsreplace <?= date("Y") ?></div>
+                    <div class="col-md-auto opacity-75">&copy; <?= $metaInfos->getValue("name") ?> <?= date("Y") ?></div>
                 </div>
             </div>
         </div>
@@ -115,6 +129,7 @@ $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_b
 ?>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/bootstrap-cookie-consent-settings/src/bootstrap-cookie-consent-settings.js"></script>
+<!--
 <script>
     window.cookieSettings = new BootstrapCookieConsentSettings({
         privacyPolicyUrl: "<?= $articlePrivacyPolicy ? $articlePrivacyPolicy->getUrl() : "" ?>",
@@ -129,6 +144,7 @@ $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_b
         }
     })
 </script>
+-->
 <script type="module">
     import {Project} from "/assets/local/src/Project.js"
 
