@@ -75,11 +75,6 @@ if($logo) {
     </nav>
 </header>
 <main>
-    <!--
-    <pre>
-        <?= print_r($domain) ?>
-    </pre>
-    -->
     REX_ARTICLE[]
 </main>
 <!-- Footer-->
