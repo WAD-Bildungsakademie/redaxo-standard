@@ -10,7 +10,7 @@ class EmailObfuscationUtils {
 
     private static function obfuscateMailtoLinks(string $html): string
     {
-        return preg_replace_callback('/<a[^>]*href="mailto:([^"]*)"[^>]*>(.*?)<\/a>/i',
+        return preg_replace_callback('/<a[^>]*href=["\']mailto:([^"\']*)["\'][^>]*>(.*?)<\/a>/i',
             function ($matches) {
                 $email = $matches[1];
                 $label = $matches[2];
