@@ -5,29 +5,29 @@ class ShRexUtils
     public static function date(string $isoDate, string $lang): string
     {
         $timestamp = strtotime($isoDate);
-        $lang = ShTools::lang2locale($lang);
-        ShTools::setlocale($lang, LC_TIME);
+        $lang = I18nUtils::lang2locale($lang);
+        I18nUtils::setlocale($lang, LC_TIME);
         $zeitpunkt = "";
         if ($lang === "de_DE") {
             $zeitpunkt = strftime("%e. %B '%y", $timestamp);
         } else if ($lang === "en_US") {
             $zeitpunkt = strftime(strftime("%e %B '%Y", $timestamp));
         }
-        ShTools::resetlocale(LC_TIME);
+        I18nUtils::resetlocale(LC_TIME);
         return $zeitpunkt;
     }
 
     public static function time(int $timestamp, string $lang): string
     {
-        $lang = ShTools::lang2locale($lang);
-        ShTools::setlocale($lang, LC_TIME);
+        $lang = I18nUtils::lang2locale($lang);
+        I18nUtils::setlocale($lang, LC_TIME);
         $zeitpunkt = "";
         if ($lang === "de_DE") {
             $zeitpunkt = strftime("%A, %e. %B, %R Uhr", $timestamp);
         } else if ($lang === "en_US") {
             $zeitpunkt = strftime(strftime("%A, %e %B, %R", $timestamp));
         }
-        ShTools::resetlocale(LC_TIME);
+        I18nUtils::resetlocale(LC_TIME);
         return $zeitpunkt;
     }
 
@@ -50,7 +50,7 @@ class ShRexUtils
         return $articles;
     }
 
-    static function csvToMediaManagerFiles($csv): array
+    static function csvToShRexMediaManagerFiles($csv): array
     {
         $names = self::csvToArray($csv);
         $mediaManagerFiles = [];
@@ -58,25 +58,6 @@ class ShRexUtils
             $mediaManagerFiles[] = new ShRexMediaManagerFile($name);
         }
         return $mediaManagerFiles;
-    }
-
-    /**
-     * One link per line, Name URL. Separated by last space.
-     * @return array
-     */
-    static function textareaLinklist($text)
-    {
-        $linksArray = [];
-        $linesArray = preg_split("/\r\n|\n|\r/", $text);
-        foreach ($linesArray as $line) {
-            $line = trim($line);
-            if ($line) {
-                $parts = array_map('trim', explode(' ', $line));
-                $result = array(implode(' ', array_slice($parts, 0, -1)), end($parts));
-                $linksArray[$result[0]] = $result[1];
-            }
-        }
-        return $linksArray;
     }
 
     public static function seoUrlEncode(string $raw): string

@@ -1,9 +1,12 @@
 <?php
+
+namespace bootstrap;
+use ShTools;
+
 /**
  * Author and copyright: Stefan Haack (https://shaack.com)
  * License: MIT
  */
-
 class ShBootstrapControls
 {
     public static function radio($name, $label, $value, $required = true): string

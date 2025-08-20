@@ -4,7 +4,7 @@
  * License: MIT
  */
 
-class ShGeoLocate
+class GeoUtils
 {
     private string $apiKey;
 
