@@ -1,8 +1,9 @@
 <?php
 
 // require_once "./lib/BootstrapCookieConsentSettings.php";
+// require_once "lib/sh-php-tools/utils/EmailObfuscationUtils.php";
 
-$addon = rex_addon::get('project');
+// $addon = rex_addon::get('project');
 
 // register a custom yrewrite scheme
 // rex_yrewrite::setScheme(new rex_project_rewrite_scheme());
@@ -18,3 +19,13 @@ $addon = rex_addon::get('project');
 //     ...rex_mediapool::getAllowedMimeTypes(),
 //     'json' => ['application/json'],
 // ]);
+
+rex_extension::register('OUTPUT_FILTER', function (rex_extension_point $ep) {
+    if (!rex::isBackend()) {
+        $content = $ep->getSubject();
+        return EmailObfuscationUtils::obfuscateAllEmailsInAPage($content);
+    } else {
+        return $ep->getSubject();
+    }
+});
+

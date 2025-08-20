@@ -61,7 +61,7 @@ if($logo) {
                     <?php /* One pager navigation */ ?>
                     <?php foreach ($startArticleSlices as $slice) {
                         if ($slice->isOnline() && $slice->getValue(9)) {
-                            $id = ShTools::stringToHtmlId($slice->getValue(9));
+                            $id = EncryptionUtils::stringToHtmlId($slice->getValue(9));
                             ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="#<?= $id ?>"><?= $slice->getValue(9) ?></a>

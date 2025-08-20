@@ -13,9 +13,9 @@ class EncryptionUtils
         return substr(bin2hex($bytes), 0, $length);
     }
 
-    public static function generateId():string
+    public static function createHtmlId($length = 8):string
     {
-        return ShTools::createId();
+        return "id-" . EncryptionUtils::generateRandomHex($length);
     }
 
     public static function stringToHtmlId($string): string

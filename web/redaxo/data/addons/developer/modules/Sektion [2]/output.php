@@ -7,7 +7,7 @@
 $slice = $this->getCurrentSlice();
 $navigation = $slice->getValue(9);
 $bgGray = $slice->getValue(8);
-$id = ShTools::stringToHtmlId($navigation);
+$id = EncryptionUtils::stringToHtmlId($navigation);
 $headline = $slice->getValue(1);
 $subheadline = $slice->getValue(2);
 ?>

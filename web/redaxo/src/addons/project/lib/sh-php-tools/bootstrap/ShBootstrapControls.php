@@ -1,7 +1,6 @@
 <?php
 
 namespace bootstrap;
-use ShTools;
 
 /**
  * Author and copyright: Stefan Haack (https://shaack.com)
@@ -11,7 +10,7 @@ class ShBootstrapControls
 {
     public static function radio($name, $label, $value, $required = true): string
     {
-        $id = ShTools::createId(8);
+        $id = \EncryptionUtils::createHtmlId(8);
         $attrRequired = $required ? "required" : "";
         return "
             <div class='form-check'>
