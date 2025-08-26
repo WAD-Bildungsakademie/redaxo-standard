@@ -12658,25 +12658,6 @@ footer .footer-bottom {
   bottom: 7%;
 }
 
-/**
- * Author: Stefan Haack (https://shaack.com)
- * Date: 2024-07-29
- */
-.module-0805ef {
-  text-align: center;
-  padding-top: 4rem;
-  padding-bottom: 0;
-  margin-bottom: -0.25rem;
-}
-.module-0805ef h2, .module-0805ef .h2 {
-  line-height: 1.2;
-  margin-bottom: 0;
-}
-.module-0805ef .subheadline {
-  font-size: 1.05rem;
-  color: #6c757d;
-}
-
 .module-e5c406 {
   padding-bottom: 0;
   padding-top: 0;
