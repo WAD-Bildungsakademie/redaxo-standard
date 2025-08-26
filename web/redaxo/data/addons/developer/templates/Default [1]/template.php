@@ -20,7 +20,7 @@ if($logo) {
 <html lang="de">
 <head>
     <meta charset="utf-8"/>
-    <base href="/">
+    <!-- <base href="/"> -->
     <title><?= $metaInfos->getValue("name") ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
@@ -49,7 +49,7 @@ if($logo) {
 <header>
     <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
-            <a class="navbar-brand" href="#top">
+            <a class="navbar-brand" href="/">
                 <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

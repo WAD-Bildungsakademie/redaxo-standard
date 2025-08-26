@@ -4,52 +4,55 @@
  */
 
 .module-7bc9e6 {
-    position: relative;
-    min-height: 100svh;
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
-  background-color: $gray-100;
-    .text {
+  position: relative;
+  min-height: 100svh;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  padding-top: 0;
+
+  .text {
+    .text-large {
+      color: $c-blue-dark;
+      font-size: 480%;
+      // text-transform: uppercase;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      line-height: 1;
+      letter-spacing: -0.2rem;
+    }
+
+    .text-small {
+      color: $gray-900;
+      margin-bottom: 2rem;
+    }
+
+    @include media-breakpoint-down("lg") {
       .text-large {
-        color: $c-blue-dark;
-        font-size: 480%;
-        // text-transform: uppercase;
-        font-family: "Inter", sans-serif;
-        font-weight: bold;
-        margin-bottom: 2rem;
-        line-height: 1;
-        letter-spacing: -0.2rem;
+        font-size: 420%;
+        letter-spacing: -0.1rem;
       }
-      .text-small {
-        color: $gray-900;
-        line-height: 1.3;
-        margin-bottom: 2rem;
-      }
-      @include media-breakpoint-down("lg") {
-        .text-large {
-          font-size: 420%;
-          letter-spacing: -0.1rem;
-        }
-        .text-sub {
-          font-size: 180%;
-        }
-      }
-      @include media-breakpoint-down("md") {
-        .text-large {
-            font-size: 380%;
-            letter-spacing: -0.1rem;
-        }
-        .text-sub {
-            font-size: 180%;
-        }
+      .text-sub {
+        font-size: 180%;
       }
     }
-    .skyline {
-      width: calc(400px + 20%);
-      max-width: 98%;
-      position: absolute;
-      right: 1%;
-      bottom: 7%;
+    @include media-breakpoint-down("md") {
+      .text-large {
+        font-size: 380%;
+        letter-spacing: -0.1rem;
+      }
+      .text-sub {
+        font-size: 180%;
+      }
     }
   }
+
+  .skyline {
+    width: calc(400px + 20%);
+    max-width: 98%;
+    position: absolute;
+    right: 1%;
+    bottom: 7%;
+  }
+}

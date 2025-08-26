@@ -9,9 +9,8 @@ header {
     transition: background-color 0.3s;
     .navbar-brand {
       img {
-        width: 20rem;
-        max-width: calc(100vw - 7.5rem);
-        transition: width 0.3s;
+        height: 4rem;
+        transition: height 0.3s;
       }
     }
     .nav-item {
@@ -47,7 +46,7 @@ header {
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       .navbar-brand {
         img {
-          width: 12rem;
+          height: 2.8rem;
         }
       }
     }

@@ -15,6 +15,7 @@ export class Project {
             this.updateNavbar()
             this.makeTablesResponsive()
             this.closeBootstrapNavigationAfterClick()
+            this.slideInEffect()
             DomUtils.openExternalLinksBlank()
         })
     }
@@ -42,6 +43,28 @@ export class Project {
             });
         });
 
+    }
+
+    slideInEffect() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const targets = document.querySelectorAll('img.slide-in, img.slide-in-left, img.slide-in-right');
+            if (!targets.length) return;
+            // Use IntersectionObserver for efficient viewport detection
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Remove this line if you want the animation every time it re-enters the viewport
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: '0px 0px -10% 0px' // trigger a bit before fully in view
+            });
+            targets.forEach(el => observer.observe(el));
+        });
     }
 
     updateNavbar() {
