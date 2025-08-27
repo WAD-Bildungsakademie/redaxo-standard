@@ -17,6 +17,7 @@ export class Project {
             this.closeBootstrapNavigationAfterClick()
             this.slideInEffect()
             this.transformSmartActionLinks()
+            this.changePrimaryColor("#ff0000")
             DomUtils.openExternalLinksBlank()
         })
     }
@@ -86,6 +87,21 @@ export class Project {
                 link.innerHTML = `${newText} <i class="bi bi-arrow-right icon-animate icon-bold"></i>`;
             }
         });
-
     }
+
+    changePrimaryColor(newColor) {
+        document.documentElement.style.setProperty('--bs-primary', newColor);
+        document.documentElement.style.setProperty('--bs-primary-rgb', this.hexToRgb(newColor));
+    }
+
+// Helper function to convert hex to RGB values
+    hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ?
+            `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` :
+            null;
+    }
+
+// Usage
+
 }

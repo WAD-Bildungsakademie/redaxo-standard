@@ -6,6 +6,7 @@
 // globals
 $body-bg: $c-white;
 $main-offset: 4rem;
+$enable-css-custom-properties: true;
 
 // typography
 $h1-font-size: 3rem;
@@ -18,11 +19,10 @@ $font-size-base: 1.05rem;
 // navigation
 
 $navbar-brand-padding-y: 0;
-$nav-link-hover-color: $primary;
+// $nav-link-hover-color: $primary;
 $navbar-nav-link-padding-x: 1rem;
 
 $section-spacing: 4rem;
 
 $table-border-color: #c9c9c9;
 $input-border-color: #000;
-$link-font-weight: bold;

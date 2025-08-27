@@ -4,7 +4,7 @@ footer {
   a, [role="button"] {
     color: white;
     &:hover {
-      color: lighten($nav-link-hover-color, 20%);
+      // color: lighten($nav-link-hover-color, 20%);
     }
   }
   .footer-top {
