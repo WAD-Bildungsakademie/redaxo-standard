@@ -22,7 +22,7 @@ $buttonLink = $slice->getLink(5);
                     <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
                     <div class="text-small"><?= $slice->getValue(3) ?></div>
                     <?php if($buttonText && $buttonLink) { ?>
-                        <a href="<?= $buttonLink ?>" class="btn btn-primary mt-3"><?= $buttonText ?></a>
+                        <a href="<?= $buttonLink ?>" class="btn btn-primary"><?= $buttonText ?></a>
                     <?php } ?>
                 </div>
             </div>

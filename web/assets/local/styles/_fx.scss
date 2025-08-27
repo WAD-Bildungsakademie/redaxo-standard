@@ -29,3 +29,19 @@ img.slide-in-right.in-view { transform: translateX(0); }
     opacity: 1;
   }
 }
+
+.icon-animate {
+  transition: transform 0.2s ease-in-out;
+  display: inline-block;
+}
+a:hover .icon-animate {
+  transform: translateX(3px);
+}
+
+.icon-bold {
+  text-shadow: 1px 0 0 currentColor;
+}
+
+.icon-small {
+  scale: 0.8;
+}

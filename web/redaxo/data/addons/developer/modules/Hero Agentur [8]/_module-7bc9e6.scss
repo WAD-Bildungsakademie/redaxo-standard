@@ -6,10 +6,10 @@
 .module-7bc9e6 {
   position: relative;
   min-height: 100svh;
-  background-position: center center;
-  background-size: cover;
+  background-color: $gray-100;
   overflow: hidden;
-  padding-top: 0;
+  margin-top: -$main-offset;
+  padding-top: $main-offset;
 
   .text {
     .text-large {

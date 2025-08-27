@@ -16,6 +16,7 @@ export class Project {
             this.makeTablesResponsive()
             this.closeBootstrapNavigationAfterClick()
             this.slideInEffect()
+            this.transformSmartActionLinks()
             DomUtils.openExternalLinksBlank()
         })
     }
@@ -46,25 +47,23 @@ export class Project {
     }
 
     slideInEffect() {
-        document.addEventListener('DOMContentLoaded', () => {
-            const targets = document.querySelectorAll('img.slide-in, img.slide-in-left, img.slide-in-right');
-            if (!targets.length) return;
-            // Use IntersectionObserver for efficient viewport detection
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        // Remove this line if you want the animation every time it re-enters the viewport
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                root: null,
-                threshold: 0.1,
-                rootMargin: '0px 0px -10% 0px' // trigger a bit before fully in view
+        const targets = document.querySelectorAll('img.slide-in, img.slide-in-left, img.slide-in-right');
+        if (!targets.length) return;
+        // Use IntersectionObserver for efficient viewport detection
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    // Remove this line if you want the animation every time it re-enters the viewport
+                    obs.unobserve(entry.target);
+                }
             });
-            targets.forEach(el => observer.observe(el));
+        }, {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -10% 0px' // trigger a bit before fully in view
         });
+        targets.forEach(el => observer.observe(el));
     }
 
     updateNavbar() {
@@ -74,5 +73,19 @@ export class Project {
         } else {
             navbarBrand.classList.remove("reduce")
         }
+    }
+
+    transformSmartActionLinks() {
+        // Find all links that end with '>'
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            const text = link.textContent.trim();
+            if (text.endsWith('>')) {
+                // Remove the '>' and add the Bootstrap icon
+                const newText = text.slice(0, -1).trim();
+                link.innerHTML = `${newText} <i class="bi bi-chevron-right icon-small icon-animate icon-bold"></i>`;
+            }
+        });
+
     }
 }
