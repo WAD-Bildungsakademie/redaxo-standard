@@ -83,7 +83,7 @@ export class Project {
             if (text.endsWith('>')) {
                 // Remove the '>' and add the Bootstrap icon
                 const newText = text.slice(0, -1).trim();
-                link.innerHTML = `${newText} <i class="bi bi-chevron-right icon-small icon-animate icon-bold"></i>`;
+                link.innerHTML = `${newText} <i class="bi bi-arrow-right icon-animate icon-bold"></i>`;
             }
         });
 
