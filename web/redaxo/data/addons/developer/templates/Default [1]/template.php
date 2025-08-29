@@ -88,8 +88,12 @@ if($logo) {
                     </div>
                     <div class="col-md text-md-end">
                         <?php
-                        $pflichtseiten = ShRexArticleService::getArticleByName("[ Pflichtseiten ]", $domain->getMountId());
-                        $articles = $pflichtseiten->getCategory()->getChildren();
+                        $serviceCategoryId = ShRexMetaInfos::getValue("service_category");
+                        $serviceCategory = rex_category::getRootCategories(true);
+                        if($serviceCategoryId) {
+                            $serviceCategory = rex_category::get($serviceCategoryId);
+                        }
+                        $articles = $serviceCategory->getChildren();
                         foreach ($articles as $serviceArticle) {
                             if ($serviceArticle->isSiteStartArticle()) {
                                 continue;

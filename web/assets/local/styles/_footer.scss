@@ -1,19 +1,17 @@
 footer {
-  background-color: var(--bs-primary);
-  color: white;
-  /*
-  a, [role="button"] {
-    color: white;
+  background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%); // CSS native darken
+  color: rgba(255, 255, 255, 0.9);
+  a {
+    color: rgba(255, 255, 255, 0.98);
     &:hover {
-      // color: lighten($nav-link-hover-color, 20%);
+      color: rgba(255, 255, 255, 0.7);
     }
   }
-   */
   .footer-top {
     padding: 2rem 0;
   }
   .footer-bottom {
     padding: 1rem 0;
-    background-color: color-mix(in srgb, var(--bs-primary) 85%, black 15%); // CSS native darken
+    background-color: color-mix(in srgb, var(--bs-primary) 75%, black 25%); // CSS native darken
   }
 }
