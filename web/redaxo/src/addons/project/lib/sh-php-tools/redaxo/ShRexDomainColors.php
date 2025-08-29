@@ -13,6 +13,12 @@ class ShRexDomainColors
         $html .= ':root {';
         $html .= '--bs-primary: ' . $primary . ';';
         $html .= '--bs-primary-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
+        $html .= '--bs-link-color: ' . $primary . ';';
+        $html .= '--bs-link-color-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
+        $html .= '--bs-link-hover-color: ' . ColorUtils::darkenColor($primary, 15) . ';';
+        $html .= '--bs-link-hover-color-rgb: ' . ColorUtils::hex2rgb(ColorUtils::darkenColor($primary, 15)) . ';';
+
+
         /*
         if (isset($domainColors['secondary'])) {
             echo '--bs-secondary: ' . $domainColors['secondary'] . ';';

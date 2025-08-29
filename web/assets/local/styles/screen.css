@@ -12459,7 +12459,7 @@ img.slide-in-right.in-view {
 }
 
 a:hover .icon-animate {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 .icon-bold {
