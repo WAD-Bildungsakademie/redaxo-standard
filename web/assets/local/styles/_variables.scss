@@ -1,11 +1,10 @@
 /**
  * Author: Stefan Haack (https://shaack.com)
- * Date: 2024-07-21
  */
 
 // globals
 $body-bg: $c-white;
-$main-offset: 4rem;
+$main-offset: 5rem;
 $enable-css-custom-properties: true;
 $section-spacing: 4rem;
 
@@ -18,6 +17,8 @@ $font-family-sans-serif: $font-family-base;
 $font-size-base: 1.05rem;
 $link-decoration: none;
 $link-hover-decoration: underline;
+
+$box-shadow-sm: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.15);
 
 // navigation
 $navbar-brand-padding-y: 0;

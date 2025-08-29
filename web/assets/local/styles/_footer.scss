@@ -1,6 +1,9 @@
 footer {
   background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%); // CSS native darken
   color: rgba(255, 255, 255, 0.9);
+  b, strong {
+    color: rgba(255, 255, 255, 1);
+  }
   a {
     color: rgba(255, 255, 255, 0.98);
     &:hover {

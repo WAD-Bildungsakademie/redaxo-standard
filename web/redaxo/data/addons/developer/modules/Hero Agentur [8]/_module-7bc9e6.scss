@@ -12,20 +12,22 @@
   padding-top: $main-offset;
 
   .text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     .text-large {
       color: $c-blue-dark;
       font-size: 480%;
       // text-transform: uppercase;
       font-family: "Inter", sans-serif;
       font-weight: bold;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       line-height: 1;
       letter-spacing: -0.2rem;
     }
 
     .text-small {
-      color: $gray-900;
-      margin-bottom: 2rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
     }
 
     @include media-breakpoint-down("lg") {
@@ -33,26 +35,12 @@
         font-size: 420%;
         letter-spacing: -0.1rem;
       }
-      .text-sub {
-        font-size: 180%;
-      }
     }
     @include media-breakpoint-down("md") {
       .text-large {
         font-size: 380%;
         letter-spacing: -0.1rem;
       }
-      .text-sub {
-        font-size: 180%;
-      }
     }
-  }
-
-  .skyline {
-    width: calc(400px + 20%);
-    max-width: 98%;
-    position: absolute;
-    right: 1%;
-    bottom: 7%;
   }
 }

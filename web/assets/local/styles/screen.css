@@ -462,7 +462,6 @@
  */
 /**
  * Author: Stefan Haack (https://shaack.com)
- * Date: 2024-07-21
  */
 /*!
  * Bootstrap  v5.3.7 (https://getbootstrap.com/)
@@ -579,7 +578,7 @@
   --bs-border-radius-2xl: var(--bs-border-radius-xxl);
   --bs-border-radius-pill: 50rem;
   --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-box-shadow-sm: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.15);
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-focus-ring-width: 0.25rem;
@@ -12513,7 +12512,7 @@ p {
 }
 
 main {
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 main a.smart-action-link {
   text-decoration: none;
@@ -12530,6 +12529,7 @@ header nav.navbar {
 }
 header nav.navbar .navbar-brand img {
   height: 4rem;
+  max-width: 80vw;
   transition: height 0.3s;
 }
 header nav.navbar .nav-item {
@@ -12558,7 +12558,7 @@ header nav.navbar .navbar-collapse {
 }
 header nav.navbar.reduce {
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.15);
 }
 header nav.navbar.reduce .navbar-brand img {
   height: 2.8rem;
@@ -12567,6 +12567,9 @@ header nav.navbar.reduce .navbar-brand img {
 footer {
   background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
   color: rgba(255, 255, 255, 0.9);
+}
+footer b, footer strong {
+  color: rgb(255, 255, 255);
 }
 footer a {
   color: rgba(255, 255, 255, 0.98);
@@ -12592,7 +12595,7 @@ footer .footer-bottom {
  * Date: 2025-08-12
  */
 .module-7bba0e {
-  margin-top: -4rem;
+  margin-top: -5rem;
   padding: 0;
   width: 100vw;
   height: 100svh;
@@ -12645,29 +12648,30 @@ footer .footer-bottom {
   min-height: 100svh;
   background-color: #f8f9fa;
   overflow: hidden;
-  margin-top: -4rem;
-  padding-top: 4rem;
+  margin-top: -5rem;
+  padding-top: 5rem;
+}
+.module-7bc9e6 .text {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .module-7bc9e6 .text .text-large {
   color: #0B2346;
   font-size: 480%;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1;
   letter-spacing: -0.2rem;
 }
 .module-7bc9e6 .text .text-small {
-  color: #212529;
-  margin-bottom: 2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
 }
 @media (max-width: 991.98px) {
   .module-7bc9e6 .text .text-large {
     font-size: 420%;
     letter-spacing: -0.1rem;
-  }
-  .module-7bc9e6 .text .text-sub {
-    font-size: 180%;
   }
 }
 @media (max-width: 767.98px) {
@@ -12675,16 +12679,6 @@ footer .footer-bottom {
     font-size: 380%;
     letter-spacing: -0.1rem;
   }
-  .module-7bc9e6 .text .text-sub {
-    font-size: 180%;
-  }
-}
-.module-7bc9e6 .skyline {
-  width: calc(400px + 20%);
-  max-width: 98%;
-  position: absolute;
-  right: 1%;
-  bottom: 7%;
 }
 
 .module-e5c406 {

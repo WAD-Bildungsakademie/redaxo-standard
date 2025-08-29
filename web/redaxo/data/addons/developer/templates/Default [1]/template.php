@@ -84,7 +84,7 @@ if ($logo) {
             <div class="">
                 <div class="row align-items-center">
                     <div class="col-md-auto pb-4 pb-md-0">
-                        <?php // rex_global_settings::getValue('address'); ?>
+                        <?= ShRexMetaInfos::getValue('address'); ?>
                     </div>
                     <div class="col-md text-md-end">
                         <?php
@@ -114,12 +114,10 @@ if ($logo) {
         </div>
     </div>
     <div class="footer-bottom">
-        <div class="container-fluid">
-            <div class="max-width-xxl mx-auto">
-                <div class="row">
-                    <div class="col-md-auto opacity-75">
-                        &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
-                </div>
+        <div class="container-fluid max-width-xxl mx-auto">
+            <div class="row">
+                <div class="col-md-auto opacity-75">
+                    &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
             </div>
         </div>
     </div>
