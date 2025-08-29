@@ -84,6 +84,7 @@ export class Project {
                 // Remove the '>' and add the Bootstrap icon
                 const newText = text.slice(0, -1).trim();
                 link.innerHTML = `${newText} <i class="bi bi-arrow-right icon-animate icon-bold"></i>`;
+                link.classList.add('smart-action-link');
             }
         });
     }

@@ -11,7 +11,7 @@ if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
 $cookieSettings = new BootstrapCookieConsentSettings();
 $domain = rex_yrewrite::getCurrentDomain();
 $logo = ShRexMetaInfos::getValue("logo");
-if($logo) {
+if ($logo) {
     $logo = new ShRexMediaManagerFile($logo);
 }
 ?>
@@ -43,7 +43,7 @@ if($logo) {
             }
         }
     </script>
-    <?=  ShRexDomainColors::renderStyle(); ?>
+    <?= ShRexDomainColors::renderStyle(); ?>
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
 <header>
@@ -89,19 +89,21 @@ if($logo) {
                     <div class="col-md text-md-end">
                         <?php
                         $serviceCategoryId = ShRexMetaInfos::getValue("service_category");
-                        $serviceCategory = rex_category::getRootCategories(true);
-                        if($serviceCategoryId) {
+                        $serviceCategory = null;
+                        if ($serviceCategoryId) {
                             $serviceCategory = rex_category::get($serviceCategoryId);
                         }
-                        $articles = $serviceCategory->getChildren();
-                        foreach ($articles as $serviceArticle) {
-                            if ($serviceArticle->isSiteStartArticle()) {
-                                continue;
-                            }
-                            ?>
-                            <a class="text-decoration-none me-3 text-nowrap"
-                               href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
-                        <?php } ?>
+                        if ($serviceCategory) {
+                            $articles = $serviceCategory->getChildren();
+                            foreach ($articles as $serviceArticle) {
+                                if ($serviceArticle->isSiteStartArticle()) {
+                                    continue;
+                                }
+                                ?>
+                                <a class="text-decoration-none me-3 text-nowrap"
+                                   href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
+                            <?php }
+                        } ?>
                         <!--
                         <span onclick="window.cookieSettings.showDialog()" role="button"
                               class="text-nowrap me-3">Cookie-Einstellungen</span>
@@ -115,7 +117,8 @@ if($logo) {
         <div class="container-fluid">
             <div class="max-width-xxl mx-auto">
                 <div class="row">
-                    <div class="col-md-auto opacity-75">&copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
+                    <div class="col-md-auto opacity-75">
+                        &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
                 </div>
             </div>
         </div>

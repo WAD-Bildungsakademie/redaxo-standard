@@ -7,6 +7,7 @@
 $body-bg: $c-white;
 $main-offset: 4rem;
 $enable-css-custom-properties: true;
+$section-spacing: 4rem;
 
 // typography
 $h1-font-size: 3rem;
@@ -15,14 +16,12 @@ $font-family-heading: 'Inter', sans-serif;
 $font-family-base: 'Open Sans', sans-serif;
 $font-family-sans-serif: $font-family-base;
 $font-size-base: 1.05rem;
+$link-decoration: none;
+$link-hover-decoration: underline;
 
 // navigation
-
 $navbar-brand-padding-y: 0;
-// $nav-link-hover-color: $primary;
 $navbar-nav-link-padding-x: 1rem;
 
-$section-spacing: 4rem;
-
-$table-border-color: #c9c9c9;
-$input-border-color: #000;
+// $table-border-color: #c9c9c9;
+// $input-border-color: #000;
