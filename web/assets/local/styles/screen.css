@@ -12554,18 +12554,23 @@ header nav.navbar.reduce .navbar-brand img {
 }
 
 footer {
-  background-color: #0d6efd;
+  background-color: var(--bs-primary);
   color: white;
-}
-footer a, footer [role=button] {
-  color: white;
+  /*
+  a, [role="button"] {
+    color: white;
+    &:hover {
+      // color: lighten($nav-link-hover-color, 20%);
+    }
+  }
+   */
 }
 footer .footer-top {
   padding: 2rem 0;
 }
 footer .footer-bottom {
   padding: 1rem 0;
-  background-color: rgb(1.9713114754, 97.5799180328, 238.5286885246);
+  background-color: color-mix(in srgb, var(--bs-primary) 85%, black 15%);
 }
 
 .module {

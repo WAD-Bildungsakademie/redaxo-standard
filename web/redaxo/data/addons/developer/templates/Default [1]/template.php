@@ -10,8 +10,7 @@ if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
 }
 $cookieSettings = new BootstrapCookieConsentSettings();
 $domain = rex_yrewrite::getCurrentDomain();
-$metaInfos = FriendsOfRedaxo\YrewriteMetainfo\Domain::getCurrent();
-$logo = $metaInfos->getValue("logo");
+$logo = ShRexMetaInfos::getValue("logo");
 if($logo) {
     $logo = new ShRexMediaManagerFile($logo);
 }
@@ -21,7 +20,7 @@ if($logo) {
 <head>
     <meta charset="utf-8"/>
     <!-- <base href="/"> -->
-    <title><?= $metaInfos->getValue("name") ?></title>
+    <title><?= ShRexMetaInfos::getValue("name") ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content=""/>
 
@@ -44,6 +43,7 @@ if($logo) {
             }
         }
     </script>
+    <?=  ShRexDomainColors::renderStyle(); ?>
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
 <header>
@@ -111,7 +111,7 @@ if($logo) {
         <div class="container-fluid">
             <div class="max-width-xxl mx-auto">
                 <div class="row">
-                    <div class="col-md-auto opacity-75">&copy; <?= $metaInfos->getValue("name") ?> <?= date("Y") ?></div>
+                    <div class="col-md-auto opacity-75">&copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
                 </div>
             </div>
         </div>

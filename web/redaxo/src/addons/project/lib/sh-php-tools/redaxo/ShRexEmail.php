@@ -2,7 +2,6 @@
 
 /**
  * Author: Stefan Haack (https://shaack.com)
- * Date: 2023-12-12
  */
 class ShRexEmail
 {
