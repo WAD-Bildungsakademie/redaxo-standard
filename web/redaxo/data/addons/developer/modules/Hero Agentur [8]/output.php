@@ -18,11 +18,11 @@ $buttonLink = $slice->getLink(5);
     <div class="container-fluid max-width-xxl mx-auto">
         <div class="row align-items-center">
             <div class="col-lg-6 px-lg-5">
-                <div class="text px-1">
+                <div class="text slide-in slide-in-left px-1">
                     <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
                     <div class="text-small"><?= $slice->getValue(3) ?></div>
                     <?php if($buttonText && $buttonLink) { ?>
-                        <a href="<?= $buttonLink ?>" class="btn btn-primary"><?= $buttonText ?></a>
+                        <a href="<?= $buttonLink ?>" class="btn btn-white rounded-5 px-4"><?= $buttonText ?></a>
                     <?php } ?>
                 </div>
             </div>

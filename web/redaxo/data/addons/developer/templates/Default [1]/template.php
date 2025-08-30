@@ -1,6 +1,13 @@
 <?php
 $v = "2508092000";
 $domain = rex_yrewrite::getCurrentDomain();
+$startArticle = rex_article::get($domain->getStartId());
+$rootCategories = rex_article::get($domain->getMountId())->getCategory()->getChildren();
+$serviceCategoryId = (int) ShRexMetaInfos::getValue("service_category");
+$serviceCategory = null;
+if ($serviceCategoryId) {
+    $serviceCategory = rex_category::get($serviceCategoryId);
+}
 $article = rex_article::getCurrent();
 $isStartArticle = $article->getId() === $domain->getStartId();
 $articleSlices = rex_article_slice::getSlicesForArticle($article->getId());
@@ -63,7 +70,18 @@ $logo = new ShRexMediaManagerFile($logoFile);
                         <?php }
                     } ?>
                     <?php /* TODO Multi page navigation */
-
+                        foreach ($rootCategories as $category) {
+                            if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
+                                $article = $category->getStartArticle();
+                                if ($article) {
+                                    ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?= $article->getUrl() ?>"><?= $category->getName() ?></a>
+                                    </li>
+                                    <?php
+                                }
+                            }
+                        }
                     ?>
                 </ul>
             </div>
@@ -84,11 +102,6 @@ $logo = new ShRexMediaManagerFile($logoFile);
                     </div>
                     <div class="col-md text-md-end">
                         <?php
-                        $serviceCategoryId = ShRexMetaInfos::getValue("service_category");
-                        $serviceCategory = null;
-                        if ($serviceCategoryId) {
-                            $serviceCategory = rex_category::get($serviceCategoryId);
-                        }
                         if ($serviceCategory) {
                             $articles = $serviceCategory->getChildren();
                             foreach ($articles as $serviceArticle) {

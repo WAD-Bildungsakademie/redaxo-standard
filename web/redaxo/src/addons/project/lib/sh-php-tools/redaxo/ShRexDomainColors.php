@@ -8,14 +8,18 @@ class ShRexDomainColors
     static function renderStyle(): string
     {
         $primary = ShRexMetaInfos::getValue("color_primary");
+        $primaryDark = ColorUtils::darkenColor($primary, 15);
+        $primaryLight = ColorUtils::lightenColor($primary, 15);
         $html = '';
         $html .= '<style id="domain-colors">';
         $html .= ':root {';
         $html .= '--bs-primary: ' . $primary . ';';
         $html .= '--bs-primary-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
+        $html .= '--bs-primary-hover: ' . $primaryDark . ';';
+        $html .= '--bs-primary-dark: ' . $primaryDark . ';';
         $html .= '--bs-link-color: ' . $primary . ';';
         $html .= '--bs-link-color-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
-        $html .= '--bs-link-hover-color: ' . ColorUtils::darkenColor($primary, 15) . ';';
+        $html .= '--bs-link-hover-color: ' . $primaryDark . ';';
         $html .= '--bs-link-hover-color-rgb: ' . ColorUtils::hex2rgb(ColorUtils::darkenColor($primary, 15)) . ';';
         $html .= '}';
 

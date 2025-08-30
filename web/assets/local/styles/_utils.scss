@@ -24,5 +24,14 @@ body * {
 }
 
 .bg-gray {
-  background-color: $gray-200;
+  background-color: darken($gray-100, 1%);
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--bs-primary-dark);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--bs-primary-dark);
+  }
 }

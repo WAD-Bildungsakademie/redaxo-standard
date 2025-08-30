@@ -47,7 +47,7 @@ export class Project {
     }
 
     slideInEffect() {
-        const targets = document.querySelectorAll('img.slide-in, img.slide-in-left, img.slide-in-right');
+        const targets = document.querySelectorAll('.slide-in, .slide-in-left, .slide-in-right');
         if (!targets.length) return;
         // Use IntersectionObserver for efficient viewport detection
         const observer = new IntersectionObserver((entries, obs) => {

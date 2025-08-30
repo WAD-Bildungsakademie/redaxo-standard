@@ -12415,45 +12415,54 @@ textarea.form-control-lg {
 }
 
 .bg-gray {
-  background-color: #e9ecef;
+  background-color: rgb(245.025, 246.45, 247.875);
+}
+
+.btn-white {
+  background-color: white;
+  color: var(--bs-primary-dark);
+}
+.btn-white:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--bs-primary-dark);
 }
 
 /* Start slightly shifted and faded */
-img.slide-in {
+.slide-in {
   opacity: 0;
   transform: translateY(16px); /* slide up into place */
-  transition: transform 1000ms ease-out, opacity 1000ms ease-out;
+  transition: transform 1200ms ease-out, opacity 1200ms ease-out;
   will-change: transform, opacity;
 }
 
 /* When visible, reset to natural position */
-img.slide-in.in-view {
+.slide-in.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Optional: left/right variants */
-img.slide-in-left {
+.slide-in-left {
   transform: translateX(-16px);
 }
 
-img.slide-in-left.in-view {
+.slide-in-left.in-view {
   transform: translateX(0);
 }
 
-img.slide-in-right {
+.slide-in-right {
   transform: translateX(16px);
 }
 
-img.slide-in-right.in-view {
+.slide-in-right.in-view {
   transform: translateX(0);
 }
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  img.slide-in,
-  img.slide-in-left,
-  img.slide-in-right {
+  .slide-in,
+  .slide-in-left,
+  .slide-in-right {
     transition: none;
     transform: none;
     opacity: 1;
@@ -12649,7 +12658,7 @@ footer .footer-bottom {
 .module-7bc9e6 {
   position: relative;
   min-height: 100svh;
-  background-color: #f8f9fa;
+  background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
   overflow: hidden;
   margin-top: -5rem;
   padding-top: 5rem;
@@ -12659,7 +12668,7 @@ footer .footer-bottom {
   margin-bottom: 2rem;
 }
 .module-7bc9e6 .text .text-large {
-  color: #0B2346;
+  color: rgba(255, 255, 255, 0.98);
   font-size: 480%;
   font-family: "Inter", sans-serif;
   font-weight: bold;
@@ -12668,7 +12677,7 @@ footer .footer-bottom {
   letter-spacing: -0.2rem;
 }
 .module-7bc9e6 .text .text-small {
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1.5rem;
 }
 @media (max-width: 991.98px) {

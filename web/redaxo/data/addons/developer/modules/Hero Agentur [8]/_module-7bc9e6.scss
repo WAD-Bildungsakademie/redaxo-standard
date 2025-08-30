@@ -6,7 +6,7 @@
 .module-7bc9e6 {
   position: relative;
   min-height: 100svh;
-  background-color: $gray-100;
+  background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
   overflow: hidden;
   margin-top: -$main-offset;
   padding-top: $main-offset;
@@ -15,7 +15,7 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     .text-large {
-      color: $c-blue-dark;
+      color: rgba(255, 255, 255, 0.98);
       font-size: 480%;
       // text-transform: uppercase;
       font-family: "Inter", sans-serif;
@@ -26,7 +26,7 @@
     }
 
     .text-small {
-      opacity: 0.9;
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 1.5rem;
     }
 

@@ -1,29 +1,29 @@
 /* Start slightly shifted and faded */
-img.slide-in {
+.slide-in {
   opacity: 0;
   transform: translateY(16px); /* slide up into place */
-  transition: transform 1000ms ease-out, opacity 1000ms ease-out;
+  transition: transform 1200ms ease-out, opacity 1200ms ease-out;
   will-change: transform, opacity;
 }
 
 /* When visible, reset to natural position */
-img.slide-in.in-view {
+.slide-in.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Optional: left/right variants */
-img.slide-in-left { transform: translateX(-16px); }
-img.slide-in-left.in-view { transform: translateX(0); }
+.slide-in-left { transform: translateX(-16px); }
+.slide-in-left.in-view { transform: translateX(0); }
 
-img.slide-in-right { transform: translateX(16px); }
-img.slide-in-right.in-view { transform: translateX(0); }
+.slide-in-right { transform: translateX(16px); }
+.slide-in-right.in-view { transform: translateX(0); }
 
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  img.slide-in,
-  img.slide-in-left,
-  img.slide-in-right {
+  .slide-in,
+  .slide-in-left,
+  .slide-in-right {
     transition: none;
     transform: none;
     opacity: 1;
