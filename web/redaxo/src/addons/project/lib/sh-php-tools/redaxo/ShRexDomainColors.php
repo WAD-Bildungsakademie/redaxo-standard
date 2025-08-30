@@ -17,6 +17,7 @@ class ShRexDomainColors
         $html .= '--bs-primary-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
         $html .= '--bs-primary-hover: ' . $primaryDark . ';';
         $html .= '--bs-primary-dark: ' . $primaryDark . ';';
+        $html .= '--bs-primary-light: ' . $primaryLight . ';';
         $html .= '--bs-link-color: ' . $primary . ';';
         $html .= '--bs-link-color-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
         $html .= '--bs-link-hover-color: ' . $primaryDark . ';';
