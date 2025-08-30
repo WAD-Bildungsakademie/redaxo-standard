@@ -15,21 +15,19 @@ class ShRexMediaManagerFile
     public function __construct(string $fileName = null)
     {
         if (!$fileName) {
-            $this->fileName = rex_global_settings::getValue("placeholderImage");
+            $this->fileName = ShRexMetaInfos::getValue("placeholderImage");
             $this->isPlaceholder = true;
         } else {
             $this->fileName = $fileName;
         }
         $media = rex_media::get($this->fileName);
         if (!$media) {
-            $this->fileName = rex_global_settings::getValue("placeholderImage");
+            $this->fileName = ShRexMetaInfos::getValue("placeholderImage");
             $media = rex_media::get($this->fileName);
             $this->isPlaceholder = true;
         }
         $this->media = $media;
     }
-    
-
 
     function getMedia(): rex_media
     {

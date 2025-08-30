@@ -12589,6 +12589,9 @@ footer .footer-bottom {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+.module:last-child {
+  padding-bottom: 10rem;
+}
 
 /**
  * Author: Stefan Haack (https://shaack.com)

@@ -1,19 +1,13 @@
 <?php
 $v = "2508092000";
+$domain = rex_yrewrite::getCurrentDomain();
 $article = rex_article::getCurrent();
-$isStartArticle = $article->getId() === rex_article::getSiteStartArticleId();
-$startArticleSlices = rex_article_slice::getSlicesForArticle(rex_article::getCurrent()->getId());
+$isStartArticle = $article->getId() === $domain->getStartId();
 $articleSlices = rex_article_slice::getSlicesForArticle($article->getId());
 $bodyClass = "";
-if (count($articleSlices) > 0 && $articleSlices[0]->getId() != 13) {
-    $bodyClass .= "head-space";
-}
 $cookieSettings = new BootstrapCookieConsentSettings();
-$domain = rex_yrewrite::getCurrentDomain();
-$logo = ShRexMetaInfos::getValue("logo");
-if ($logo) {
-    $logo = new ShRexMediaManagerFile($logo);
-}
+$logoFile = ShRexMetaInfos::getValue("logo");
+$logo = new ShRexMediaManagerFile($logoFile);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -59,7 +53,7 @@ if ($logo) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <?php /* One pager navigation */ ?>
-                    <?php foreach ($startArticleSlices as $slice) {
+                    <?php foreach ($articleSlices as $slice) {
                         if ($slice->isOnline() && $slice->getValue(9)) {
                             $id = EncryptionUtils::stringToHtmlId($slice->getValue(9));
                             ?>
@@ -68,7 +62,9 @@ if ($logo) {
                             </li>
                         <?php }
                     } ?>
-                    <?php /* TODO Multi page navigation */ ?>
+                    <?php /* TODO Multi page navigation */
+
+                    ?>
                 </ul>
             </div>
         </div>

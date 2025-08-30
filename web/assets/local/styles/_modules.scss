@@ -1,6 +1,9 @@
 .module {
   padding-top: $section-spacing;
   padding-bottom: $section-spacing;
+  &:last-child {
+    padding-bottom: 2.5 * $section-spacing;
+  }
 }
 
 @import "../../../redaxo/data/addons/developer/modules/Hero Big Picture [1]/module-7bba0e";
