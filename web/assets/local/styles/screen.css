@@ -12420,11 +12420,17 @@ textarea.form-control-lg {
 
 .btn-white {
   background-color: white;
-  color: var(--bs-primary-dark);
+  color: color-mix(in srgb, var(--bs-primary) 60%, black 40%);
+  transition: scale 0.2s ease-in-out;
 }
 .btn-white:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: var(--bs-primary-dark);
+  background-color: white;
+  color: color-mix(in srgb, var(--bs-primary) 60%, black 40%);
+  scale: 1.1;
+}
+.btn-white:focus, .btn-white:active, .btn-white:active:focus {
+  background-color: white;
+  border-color: white;
 }
 
 /* Start slightly shifted and faded */
@@ -12658,7 +12664,7 @@ footer .footer-bottom {
 .module-7bc9e6 {
   position: relative;
   min-height: 100svh;
-  background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--bs-primary) 60%, black 40%), color-mix(in srgb, var(--bs-primary) 90%, white 10%));
   overflow: hidden;
   margin-top: -5rem;
   padding-top: 5rem;
@@ -12677,7 +12683,7 @@ footer .footer-bottom {
   letter-spacing: -0.2rem;
 }
 .module-7bc9e6 .text .text-small {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
 }
 @media (max-width: 991.98px) {

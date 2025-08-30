@@ -1,6 +1,8 @@
 <?php
 $v = "2508092000";
 $domain = rex_yrewrite::getCurrentDomain();
+$currentArticle = rex_article::getCurrent();
+$article = rex_article::get($currentArticle->getId());
 $startArticle = rex_article::get($domain->getStartId());
 $rootCategories = rex_article::get($domain->getMountId())->getCategory()->getChildren();
 $serviceCategoryId = (int) ShRexMetaInfos::getValue("service_category");
@@ -8,9 +10,9 @@ $serviceCategory = null;
 if ($serviceCategoryId) {
     $serviceCategory = rex_category::get($serviceCategoryId);
 }
-$article = rex_article::getCurrent();
-$isStartArticle = $article->getId() === $domain->getStartId();
-$articleSlices = rex_article_slice::getSlicesForArticle($article->getId());
+$categoryStartArticle = rex_article::getCurrent();
+$isStartArticle = $categoryStartArticle->getId() === $domain->getStartId();
+$articleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
 $bodyClass = "";
 $cookieSettings = new BootstrapCookieConsentSettings();
 $logoFile = ShRexMetaInfos::getValue("logo");
@@ -72,11 +74,15 @@ $logo = new ShRexMediaManagerFile($logoFile);
                     <?php /* TODO Multi page navigation */
                         foreach ($rootCategories as $category) {
                             if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
-                                $article = $category->getStartArticle();
-                                if ($article) {
+                                $categoryStartArticle = $category->getStartArticle();
+                                if ($categoryStartArticle) {
+                                    $class= "nav-link";
+                                    if($categoryStartArticle->getId() === $currentArticle->getId()) {
+                                        $class .= " active";
+                                    }
                                     ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?= $article->getUrl() ?>"><?= $category->getName() ?></a>
+                                        <a class="<?= $class ?>" href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
                                     </li>
                                     <?php
                                 }

@@ -12,7 +12,11 @@ if ($slice->getMedia(1)) {
     $url = $media->getImageSrc("large_4_3");
 }
 $buttonText = $slice->getValue(4);
-$buttonLink = $slice->getLink(5);
+$buttonLinkId = $slice->getLink(5);
+$buttonLink = null;
+if($buttonLinkId) {
+    $buttonLink = rex_getUrl($buttonLinkId);
+}
 ?>
 <section class="module module-7bc9e6">
     <div class="container-fluid max-width-xxl mx-auto">

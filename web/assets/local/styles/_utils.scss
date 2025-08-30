@@ -29,9 +29,15 @@ body * {
 
 .btn-white {
   background-color: white;
-  color: var(--bs-primary-dark);
+  color: color-mix(in srgb, var(--bs-primary) 60%, black 40%);
+  transition: scale 0.2s ease-in-out;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: var(--bs-primary-dark);
+    background-color: white;
+    color: color-mix(in srgb, var(--bs-primary) 60%, black 40%);
+    scale: 1.1;
+  }
+  &:focus, &:active, &:active:focus {
+    background-color: white;
+    border-color: white;
   }
 }

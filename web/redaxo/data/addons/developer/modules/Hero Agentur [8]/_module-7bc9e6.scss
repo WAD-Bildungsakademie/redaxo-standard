@@ -6,7 +6,7 @@
 .module-7bc9e6 {
   position: relative;
   min-height: 100svh;
-  background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--bs-primary) 60%, black 40%), color-mix(in srgb, var(--bs-primary) 90%, white 10%));
   overflow: hidden;
   margin-top: -$main-offset;
   padding-top: $main-offset;
@@ -26,7 +26,7 @@
     }
 
     .text-small {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 1.5rem;
     }
 
