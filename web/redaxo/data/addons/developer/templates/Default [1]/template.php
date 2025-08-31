@@ -5,7 +5,7 @@ $currentArticle = rex_article::getCurrent();
 $article = rex_article::get($currentArticle->getId());
 $startArticle = rex_article::get($domain->getStartId());
 $rootCategories = rex_article::get($domain->getMountId())->getCategory()->getChildren();
-$serviceCategoryId = (int) ShRexMetaInfos::getValue("service_category");
+$serviceCategoryId = (int)ShRexMetaInfos::getValue("service_category");
 $serviceCategory = null;
 if ($serviceCategoryId) {
     $serviceCategory = rex_category::get($serviceCategoryId);
@@ -13,7 +13,7 @@ if ($serviceCategoryId) {
 $categoryStartArticle = rex_article::getCurrent();
 $isStartArticle = $categoryStartArticle->getId() === $domain->getStartId();
 $articleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
-$bodyClass = "";
+$bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();
 $logoFile = ShRexMetaInfos::getValue("logo");
 $logo = new ShRexMediaManagerFile($logoFile);
@@ -72,22 +72,23 @@ $logo = new ShRexMediaManagerFile($logoFile);
                         <?php }
                     } ?>
                     <?php /* TODO Multi page navigation */
-                        foreach ($rootCategories as $category) {
-                            if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
-                                $categoryStartArticle = $category->getStartArticle();
-                                if ($categoryStartArticle) {
-                                    $class= "nav-link";
-                                    if($categoryStartArticle->getId() === $currentArticle->getId()) {
-                                        $class .= " active";
-                                    }
-                                    ?>
-                                    <li class="nav-item">
-                                        <a class="<?= $class ?>" href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
-                                    </li>
-                                    <?php
+                    foreach ($rootCategories as $category) {
+                        if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
+                            $categoryStartArticle = $category->getStartArticle();
+                            if ($categoryStartArticle) {
+                                $class = "nav-link";
+                                if ($categoryStartArticle->getId() === $currentArticle->getId()) {
+                                    $class .= " active";
                                 }
+                                ?>
+                                <li class="nav-item">
+                                    <a class="<?= $class ?>"
+                                       href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
+                                </li>
+                                <?php
                             }
                         }
+                    }
                     ?>
                 </ul>
             </div>
@@ -101,29 +102,27 @@ $logo = new ShRexMediaManagerFile($logoFile);
 <footer class="footer">
     <div class="footer-top">
         <div class="container-fluid max-width-xxl mx-auto">
-            <div class="">
-                <div class="row align-items-center">
-                    <div class="col-md-auto pb-4 pb-md-0">
-                        <?= ShRexMetaInfos::getValue('address'); ?>
-                    </div>
-                    <div class="col-md text-md-end">
-                        <?php
-                        if ($serviceCategory) {
-                            $articles = $serviceCategory->getChildren();
-                            foreach ($articles as $serviceArticle) {
-                                if ($serviceArticle->isSiteStartArticle()) {
-                                    continue;
-                                }
-                                ?>
-                                <a class="text-decoration-none me-3 text-nowrap"
-                                   href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
-                            <?php }
-                        } ?>
-                        <!--
-                        <span onclick="window.cookieSettings.showDialog()" role="button"
-                              class="text-nowrap me-3">Cookie-Einstellungen</span>
-                        -->
-                    </div>
+            <div class="row align-items-center">
+                <div class="col-md-auto pb-4 pb-md-0 col-address">
+                    <?= ShRexMetaInfos::getValue('address'); ?>
+                </div>
+                <div class="col-md text-md-end col-service">
+                    <?php
+                    if ($serviceCategory) {
+                        $articles = $serviceCategory->getChildren();
+                        foreach ($articles as $serviceArticle) {
+                            if ($serviceArticle->isSiteStartArticle()) {
+                                continue;
+                            }
+                            ?>
+                            <a class="text-decoration-none me-3 text-nowrap"
+                               href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
+                        <?php }
+                    } ?>
+                    <!--
+                    <span onclick="window.cookieSettings.showDialog()" role="button"
+                          class="text-nowrap me-3">Cookie-Einstellungen</span>
+                    -->
                 </div>
             </div>
         </div>
@@ -131,8 +130,10 @@ $logo = new ShRexMediaManagerFile($logoFile);
     <div class="footer-bottom">
         <div class="container-fluid max-width-xxl mx-auto">
             <div class="row">
-                <div class="col-md-auto opacity-75">
-                    &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?></div>
+                <div class="col opacity-75">
+                    <div class="">
+                        &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?>
+                    </div>
             </div>
         </div>
     </div>

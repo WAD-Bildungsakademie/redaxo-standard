@@ -1,8 +1,12 @@
 .module {
   padding-top: $section-spacing;
   padding-bottom: $section-spacing;
+  background-color: white;
   &:last-child {
     padding-bottom: 2.5 * $section-spacing;
+  }
+  &.bg-gray {
+    background-color: lighten($gray-200, 1%);
   }
 }
 

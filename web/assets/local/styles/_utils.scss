@@ -23,10 +23,6 @@ body * {
   background-size: cover;
 }
 
-.bg-gray {
-  background-color: darken($gray-100, 1%);
-}
-
 .btn-white {
   background-color: white;
   color: color-mix(in srgb, var(--bs-primary) 60%, black 40%);

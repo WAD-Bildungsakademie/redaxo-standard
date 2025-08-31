@@ -9,7 +9,7 @@ class ShRexDomainColors
     {
         $primary = ShRexMetaInfos::getValue("color_primary");
         $primaryDark = ColorUtils::darkenColor($primary, 15);
-        $primaryLight = ColorUtils::lightenColor($primary, 15);
+        // $primaryLight = ColorUtils::lightenColor($primary, 15);
         $html = '';
         $html .= '<style id="domain-colors">';
         $html .= ':root {';
@@ -17,7 +17,7 @@ class ShRexDomainColors
         $html .= '--bs-primary-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
         $html .= '--bs-primary-hover: ' . $primaryDark . ';';
         $html .= '--bs-primary-dark: ' . $primaryDark . ';';
-        $html .= '--bs-primary-light: ' . $primaryLight . ';';
+        // $html .= '--bs-primary-light: ' . $primaryLight . ';';
         $html .= '--bs-link-color: ' . $primary . ';';
         $html .= '--bs-link-color-rgb: ' . ColorUtils::hex2rgb($primary) . ';';
         $html .= '--bs-link-hover-color: ' . $primaryDark . ';';
@@ -36,10 +36,14 @@ class ShRexDomainColors
      */
     public static function renderElementsStyle($name, mixed $primary): string
     {
+        $primaryDark = ColorUtils::darkenColor($primary, 15);
+        $primaryDarker = ColorUtils::darkenColor($primary, 25);
         $html = '';
         $html .= '.btn-' . $name . ' { background-color: ' . $primary . '; border-color: ' . $primary . '; }';
         $html .= '.btn-' . $name . ':hover { background-color: ' . ColorUtils::darkenColor($primary, 15) . '; border-color: ' . ColorUtils::darkenColor($primary, 15) . '; }';
         $html .= '.bg-' . $name . ' { background-color: ' . $primary . ' !important; }';
+        $html .= '.bg-' . $name . '-dark { background-color: ' . $primaryDark . ' !important; }';
+        $html .= '.bg-' . $name . '-darker { background-color: ' . $primaryDarker . ' !important; }';
         $html .= '.text-' . $name . ' { color: ' . $primary . ' !important; }';
         $html .= '.border-' . $name . ' { border-color: ' . $primary . ' !important; }';
         return $html;
