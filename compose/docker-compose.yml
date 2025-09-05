@@ -30,6 +30,14 @@ services:
       - ./volumes/share:/mnt/share
     networks:
       - local_network
+  mailserver:
+    container_name: ${PROJECT_PREFIX}-mailserver
+    ports:
+      - "1025:1025" # Expose fake SMTP server on port 1025
+      - "8025:8025" # Web interface for SMTP
+    image: "mailhog/mailhog"
+    networks:
+      - local_network
 networks:
   local_network:
     driver: bridge

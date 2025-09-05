@@ -18,10 +18,10 @@ if($buttonLinkId) {
     $buttonLink = rex_getUrl($buttonLinkId);
 }
 ?>
-<section class="module module-7bc9e6">
+<section class="module module-7bc9e6 d-flex align-items-center">
     <div class="container-fluid max-width-xxl mx-auto">
         <div class="row align-items-center">
-            <div class="col-lg-6 px-lg-5">
+            <div class="col-lg-6 pe-lg-5">
                 <div class="text slide-in slide-in-left px-1">
                     <h1 class="text-large"><?= $slice->getValue(2) ?></h1>
                     <div class="text-small"><?= $slice->getValue(3) ?></div>
