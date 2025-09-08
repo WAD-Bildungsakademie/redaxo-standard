@@ -1,5 +1,5 @@
 <?php
-$v = "2508092000";
+$v = "2509082050";
 $domain = rex_yrewrite::getCurrentDomain();
 $currentArticle = rex_article::getCurrent();
 $article = rex_article::get($currentArticle->getId());
@@ -50,7 +50,7 @@ $logo = new ShRexMediaManagerFile($logoFile);
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
 <header>
-    <nav id="nav-main" class="navbar navbar-dark fixed-top navbar-expand-xl">
+    <nav id="nav-main" class="navbar navbar-light bg-light fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
             <a class="navbar-brand" href="/">
                 <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
