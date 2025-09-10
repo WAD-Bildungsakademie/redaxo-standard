@@ -31,9 +31,6 @@ header {
         }
       }
     }
-    .navbar-collapse {
-      justify-content: end;
-    }
     @include media-breakpoint-down(xl) {
       .navbar-collapse {
         ul {

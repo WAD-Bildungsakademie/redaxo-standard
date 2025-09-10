@@ -15,8 +15,10 @@ $isStartArticle = $categoryStartArticle->getId() === $domain->getStartId();
 $articleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
 $bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();
+// page preferences
 $logoFile = ShRexMetaInfos::getValue("logo");
 $logo = new ShRexMediaManagerFile($logoFile);
+$navPositionLeft = ShRexMetaInfos::getValue("nav_position") === "left";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -52,14 +54,14 @@ $logo = new ShRexMediaManagerFile($logoFile);
 <header>
     <nav id="nav-main" class="navbar navbar-light bg-light fixed-top navbar-expand-xl">
         <div class="container-fluid max-width-xxl">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand me-xl-5" href="/">
                 <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse <?= $navPositionLeft ? "" : "justify-content-end" ?>" id="navbarNav">
                 <ul class="navbar-nav">
                     <?php /* One pager navigation */ ?>
                     <?php foreach ($articleSlices as $slice) {
@@ -71,7 +73,7 @@ $logo = new ShRexMediaManagerFile($logoFile);
                             </li>
                         <?php }
                     } ?>
-                    <?php /* TODO Multi page navigation */
+                    <?php /* TODO Add folding menu */
                     foreach ($rootCategories as $category) {
                         if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
                             $categoryStartArticle = $category->getStartArticle();

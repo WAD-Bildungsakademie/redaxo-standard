@@ -4242,6 +4242,7 @@ textarea.form-control-lg {
 .nav {
   --bs-nav-link-padding-x: 1rem;
   --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-size: 1.1rem;
   --bs-nav-link-font-weight: ;
   --bs-nav-link-color: var(--bs-link-color);
   --bs-nav-link-hover-color: var(--bs-link-hover-color);
@@ -4430,6 +4431,7 @@ textarea.form-control-lg {
 .navbar-nav {
   --bs-nav-link-padding-x: 0;
   --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-size: 1.1rem;
   --bs-nav-link-font-weight: ;
   --bs-nav-link-color: var(--bs-navbar-color);
   --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
@@ -12562,9 +12564,6 @@ header nav.navbar .nav-item .nav-link:hover {
 header nav.navbar .nav-item .nav-link.active {
   color: var(--bs-link-hover-color);
   border-bottom: 2px solid var(--bs-link-hover-color);
-}
-header nav.navbar .navbar-collapse {
-  justify-content: end;
 }
 @media (max-width: 1199.98px) {
   header nav.navbar .navbar-collapse ul {
