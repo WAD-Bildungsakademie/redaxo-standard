@@ -1,144 +1,29 @@
 <?php
 $v = "2509082050";
+
+// domain values
 $domain = rex_yrewrite::getCurrentDomain();
-$currentArticle = rex_article::getCurrent();
-$article = rex_article::get($currentArticle->getId());
-$startArticle = rex_article::get($domain->getStartId());
-$rootCategories = rex_article::get($domain->getMountId())->getCategory()->getChildren();
-$serviceCategoryId = (int)ShRexMetaInfos::getValue("service_category");
-$serviceCategory = null;
-if ($serviceCategoryId) {
-    $serviceCategory = rex_category::get($serviceCategoryId);
-}
-$categoryStartArticle = rex_article::getCurrent();
-$isStartArticle = $categoryStartArticle->getId() === $domain->getStartId();
-$articleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
+
+// current article and slices
 $bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();
-// page preferences
-$logoFile = ShRexMetaInfos::getValue("logo");
-$logo = new ShRexMediaManagerFile($logoFile);
-$navPositionLeft = ShRexMetaInfos::getValue("nav_position") === "left";
 ?>
 <!DOCTYPE html>
 <html lang="de">
+<!--suppress HtmlRequiredTitleElement -->
 <head>
-    <meta charset="utf-8"/>
-    <!-- <base href="/"> -->
-    <title><?= ShRexMetaInfos::getValue("name") ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
-    <link rel="manifest" href="/favicons/manifest.json">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
-    <script src="https://cdn.jsdelivr.net/npm/es-module-shims@1.8.3/dist/es-module-shims.min.js"></script>
-    <link rel="stylesheet" href="/assets/local/styles/screen.css?v=<?= $v ?>"/>
-    <script type="importmap">
-        {
-            "imports": {
-                "bootstrap-lightbox-gallery/": "/node_modules/bootstrap-lightbox-gallery/",
-                "cm-web-modules/": "/node_modules/cm-web-modules/",
-                "bootstrap-show-modal/": "/node_modules/bootstrap-show-modal/"
-            }
-        }
-    </script>
-    <?= ShRexDomainColors::renderStyle(); ?>
+    <?php include rex_path::addonData('developer', 'templates/includes/head.php'); ?>
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
 <header>
-    <nav id="nav-main" class="navbar navbar-light bg-light fixed-top navbar-expand-xl">
-        <div class="container-fluid max-width-xxl">
-            <a class="navbar-brand me-xl-5" href="/">
-                <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse <?= $navPositionLeft ? "" : "justify-content-end" ?>" id="navbarNav">
-                <ul class="navbar-nav">
-                    <?php /* One pager navigation */ ?>
-                    <?php foreach ($articleSlices as $slice) {
-                        if ($slice->isOnline() && $slice->getValue(9)) {
-                            $id = EncryptionUtils::stringToHtmlId($slice->getValue(9));
-                            ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#<?= $id ?>"><?= $slice->getValue(9) ?></a>
-                            </li>
-                        <?php }
-                    } ?>
-                    <?php /* TODO Add folding menu */
-                    foreach ($rootCategories as $category) {
-                        if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
-                            $categoryStartArticle = $category->getStartArticle();
-                            if ($categoryStartArticle) {
-                                $class = "nav-link";
-                                if ($categoryStartArticle->getId() === $currentArticle->getId()) {
-                                    $class .= " active";
-                                }
-                                ?>
-                                <li class="nav-item">
-                                    <a class="<?= $class ?>"
-                                       href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
-                                </li>
-                                <?php
-                            }
-                        }
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include rex_path::addonData('developer', 'templates/includes/header.php'); ?>
 </header>
 <main>
     REX_ARTICLE[]
 </main>
 <!-- Footer-->
 <footer class="footer">
-    <div class="footer-top">
-        <div class="container-fluid max-width-xxl mx-auto">
-            <div class="row align-items-center">
-                <div class="col-md-auto pb-4 pb-md-0 col-address">
-                    <?= ShRexMetaInfos::getValue('address'); ?>
-                </div>
-                <div class="col-md text-md-end col-service">
-                    <?php
-                    if ($serviceCategory) {
-                        $articles = $serviceCategory->getChildren();
-                        foreach ($articles as $serviceArticle) {
-                            if ($serviceArticle->isSiteStartArticle()) {
-                                continue;
-                            }
-                            ?>
-                            <a class="text-decoration-none me-3 text-nowrap"
-                               href="<?= $serviceArticle->getUrl() ?>"><?= $serviceArticle->getName() ?></a>
-                        <?php }
-                    } ?>
-                    <!--
-                    <span onclick="window.cookieSettings.showDialog()" role="button"
-                          class="text-nowrap me-3">Cookie-Einstellungen</span>
-                    -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container-fluid max-width-xxl mx-auto">
-            <div class="row">
-                <div class="col opacity-75">
-                    <div class="">
-                        &copy; <?= ShRexMetaInfos::getValue("name") ?> <?= date("Y") ?>
-                    </div>
-            </div>
-        </div>
-    </div>
+    <?php include rex_path::addonData('developer', 'templates/includes/footer.php'); ?>
 </footer>
 <?php
 $articleLegalNotice = ShRexArticleService::getLegalNoticeArticle();
