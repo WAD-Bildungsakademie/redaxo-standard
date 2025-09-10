@@ -145,8 +145,8 @@ $articleLegalNotice = ShRexArticleService::getLegalNoticeArticle();
 $articlePrivacyPolicy = ShRexArticleService::getPrivacyPolicyArticle();
 $metaHideCookieBanner = !!rex_article::getCurrent()->getValue("art_hide_cookie_banner");
 ?>
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="node_modules/bootstrap-cookie-consent-settings/src/bootstrap-cookie-consent-settings.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="/node_modules/bootstrap-cookie-consent-settings/src/bootstrap-cookie-consent-settings.js"></script>
 <!--
 <script>
     window.cookieSettings = new BootstrapCookieConsentSettings({
