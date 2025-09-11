@@ -11,20 +11,14 @@ $cookieSettings = new BootstrapCookieConsentSettings();
 <!DOCTYPE html>
 <html lang="de">
 <!--suppress HtmlRequiredTitleElement -->
-<head>
-    <?php include rex_path::addonData('developer', 'templates/includes/head.php'); ?>
-</head>
+<?php include rex_path::addonData('developer', 'templates/includes/head.php'); ?>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
-<header class="fixed-top">
-    <?php include rex_path::addonData('developer', 'templates/includes/header.php'); ?>
-</header>
+<?php include rex_path::addonData('developer', 'templates/includes/header.php'); ?>
 <main>
     REX_ARTICLE[]
 </main>
 <!-- Footer-->
-<footer class="footer">
-    <?php include rex_path::addonData('developer', 'templates/includes/footer.php'); ?>
-</footer>
+<?php include rex_path::addonData('developer', 'templates/includes/footer.php'); ?>
 <?php
 $articleLegalNotice = ShRexArticleService::getLegalNoticeArticle();
 $articlePrivacyPolicy = ShRexArticleService::getPrivacyPolicyArticle();
