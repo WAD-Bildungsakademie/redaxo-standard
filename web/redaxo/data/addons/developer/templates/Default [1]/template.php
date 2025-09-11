@@ -15,7 +15,7 @@ $cookieSettings = new BootstrapCookieConsentSettings();
     <?php include rex_path::addonData('developer', 'templates/includes/head.php'); ?>
 </head>
 <body id="top" data-bs-spy="scroll" data-bs-target="#nav-main" data-bs-offset="100" class="<?= $bodyClass ?>">
-<header>
+<header class="fixed-top">
     <?php include rex_path::addonData('developer', 'templates/includes/header.php'); ?>
 </header>
 <main>
