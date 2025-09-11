@@ -82,13 +82,41 @@ $currentArticle = rex_article::getCurrent();
     </div>
     <div class="d-none d-xl-block bg-light second-level-nav">
         <div class="container-fluid max-width-xxl">
-            <div class="text-center py-2">
+            <div class="text-center">
                 <?php
-                    $currentChildren = rex_category::getCurrent()->getChildren();
+                if (rex_category::getCurrent()) {
+                    $navigationPath = rex_category::getCurrent()->getPathAsArray();
+                    $navigationLevel = count($navigationPath);
+                    if ($navigationLevel > 0) {
+                        if ($navigationLevel == 1) {
+                            $currentChildren = rex_category::getCurrent()->getChildren();
+                        } else {
+                            $currentChildren = rex_category::getCurrent()->getParent()->getChildren();
+                        }
+                        if (count($currentChildren) > 0) {
+                            ?>
+                            <ul class="list-inline py-2 mb-0">
+                                <?php foreach ($currentChildren as $child) {
+                                    if ($child->isOnline()) {
+                                        $childStartArticle = $child->getStartArticle();
+                                        if ($childStartArticle) {
+                                            $isActive = $childStartArticle->getId() === $currentArticle->getId();
+                                            ?>
+                                            <li class="list-inline-item">
+                                                <a href="<?= $childStartArticle->getUrl() ?>"
+                                                   class="text-decoration-none <?= $isActive ? 'active' : '' ?>">
+                                                    <?= $child->getName() ?>
+                                                </a>
+                                            </li>
+                                        <?php }
+                                    }
+                                } ?>
+                            </ul>
+                            <?php
+                        }
+                    }
+                }
                 ?>
-
-
-                <!-- <p class="text-muted small mb-0">Desktop additional content</p>-->
             </div>
         </div>
     </div>
