@@ -12595,7 +12595,8 @@ header .second-level-nav nav a.second-level-nav-link.active {
   color: rgba(var(--bs-emphasis-color-rgb), 1);
 }
 header .second-level-nav.reduce {
-  border-bottom: none;
+  border-bottom-color: transparent;
+  transition: border-bottom-color 0.3s;
 }
 header .second-level-nav.reduce nav {
   background-color: white;

@@ -71,7 +71,8 @@ header {
 
     }
     &.reduce {
-      border-bottom: none;
+      border-bottom-color: transparent;
+      transition: border-bottom-color 0.3s;
       nav {
         // opacity: 0;
         // transition: opacity 0.3s;
