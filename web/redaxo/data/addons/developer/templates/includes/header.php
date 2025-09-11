@@ -63,20 +63,23 @@ $currentArticle = rex_article::getCurrent();
                     } ?>
                 </ul>
 
-                <!-- Additional content below navigation -->
+                <!-- Additional content below navigation - Mobile only -->
                 <div class="mt-2">
                     <div class="px-3 d-xl-none border-top pt-2">
                         <!-- Mobile content -->
                         <p class="text-muted small mb-2">Mobile additional content</p>
-                    </div>
-                    <div class="px-3 d-none d-xl-block">
-                        <!-- Desktop content -->
-                        <p class="text-muted small mb-0">Desktop additional content</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </nav>
-<!-- Additional content below navbar -->
+<!-- Additional content below navbar - Desktop only -->
+<div class="d-none d-xl-block bg-light">
+    <div class="container-fluid max-width-xxl">
+        <div class="text-center py-2">
+            <p class="text-muted small mb-0">Desktop additional content</p>
+        </div>
+    </div>
+</div>
 </div>
