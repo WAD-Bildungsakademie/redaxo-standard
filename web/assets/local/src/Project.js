@@ -9,17 +9,16 @@ import {CoreUtils} from "cm-web-modules/src/utils/CoreUtils.js";
 export class Project {
     constructor() {
         DomUtils.onDocumentReady(() => {
-            DomUtils.openExternalLinksBlank()
             const debouncedNavbarScrollReduce = CoreUtils.debounce(this.navbarScrollReduce.bind(this), 10, true)
             window.addEventListener("scroll", () => {
                 debouncedNavbarScrollReduce()
             })
+            this.navbarScrollReduce()
+            this.makeCke5TablesResponsive()
+            this.slideInEffect()
+            this.transformSmartActionLinks()
+            DomUtils.openExternalLinksBlank()
         })
-        this.navbarScrollReduce()
-        this.makeCke5TablesResponsive()
-        this.slideInEffect()
-        this.transformSmartActionLinks()
-        DomUtils.openExternalLinksBlank()
     }
 
 
