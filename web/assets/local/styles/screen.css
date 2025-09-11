@@ -12541,6 +12541,9 @@ main a.smart-action-link {
  * Author: Stefan Haack (https://shaack.com)
  * Date: 2024-07-23
  */
+header {
+  border-bottom: 1px solid #dee2e6;
+}
 header nav.navbar {
   transition: background-color 0.3s;
 }
@@ -12576,6 +12579,9 @@ header nav.navbar.reduce {
 }
 header nav.navbar.reduce .navbar-brand img {
   height: 2.8rem;
+}
+header .second-level-nav {
+  padding-top: 5rem;
 }
 
 footer {

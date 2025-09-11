@@ -4,6 +4,7 @@
  */
 
 header {
+  border-bottom: 1px solid $gray-300;
   nav.navbar {
     // background-color: wh;
     transition: background-color 0.3s;
@@ -48,5 +49,8 @@ header {
         }
       }
     }
+  }
+  .second-level-nav {
+    padding-top: $main-offset;
   }
 }

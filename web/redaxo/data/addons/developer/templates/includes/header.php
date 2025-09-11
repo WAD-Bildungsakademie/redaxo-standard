@@ -15,9 +15,9 @@ if ($serviceCategoryId) {
 $startArticleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
 $currentArticle = rex_article::getCurrent();
 ?>
-<header class="fixed-top">
-    <div class="shadow-sm">
-        <nav id="nav-main" class="navbar navbar-light bg-light navbar-expand-xl">
+<header>
+    <div class="">
+        <nav id="nav-main" class="fixed-top navbar navbar-light bg-light navbar-expand-xl">
             <div class="container-fluid max-width-xxl">
                 <a class="navbar-brand me-xl-5" href="/">
                     <img src="<?= $logo->getFileUrl() ?>" alt="Logo" class="logo"/>
@@ -69,6 +69,7 @@ $currentArticle = rex_article::getCurrent();
                         <!-- Additional content below navigation - Mobile only -->
                         <div class="mt-2">
                             <div class="px-3 d-xl-none border-top pt-2">
+
                                 <!-- Mobile content -->
                                 <p class="text-muted small mb-2">Mobile additional content</p>
                             </div>
@@ -79,10 +80,15 @@ $currentArticle = rex_article::getCurrent();
         </nav>
         <!-- Additional content below navbar - Desktop only -->
     </div>
-    <div class="d-none d-xl-block bg-light">
+    <div class="d-none d-xl-block bg-light second-level-nav">
         <div class="container-fluid max-width-xxl">
             <div class="text-center py-2">
-                <p class="text-muted small mb-0">Desktop additional content</p>
+                <?php
+                    $currentChildren = rex_category::getCurrent()->getChildren();
+                ?>
+
+
+                <!-- <p class="text-muted small mb-0">Desktop additional content</p>-->
             </div>
         </div>
     </div>
