@@ -4,24 +4,29 @@
  */
 
 import {DomUtils} from "cm-web-modules/src/utils/DomUtils.js";
+import {CoreUtils} from "cm-web-modules/src/utils/CoreUtils.js";
 
 export class Project {
     constructor() {
         DomUtils.onDocumentReady(() => {
             DomUtils.openExternalLinksBlank()
+            const debouncedNavbarScrollReduce = CoreUtils.debounce(this.navbarScrollReduce.bind(this), 10, true)
             window.addEventListener("scroll", () => {
-                this.updateNavbar()
+                debouncedNavbarScrollReduce()
             })
-            this.updateNavbar()
-            this.makeTablesResponsive()
-            this.closeBootstrapNavigationAfterClick()
-            this.slideInEffect()
-            this.transformSmartActionLinks()
-            DomUtils.openExternalLinksBlank()
         })
+        this.navbarScrollReduce()
+        this.makeCke5TablesResponsive()
+        this.slideInEffect()
+        this.transformSmartActionLinks()
+        DomUtils.openExternalLinksBlank()
     }
 
-    makeTablesResponsive() {
+
+    /**
+     * For tables, generated with the backend editor.
+     */
+    makeCke5TablesResponsive() {
         const figures = document.querySelectorAll("figure.table")
         figures.forEach((figure) => {
             const wrapper = document.createElement("div")
@@ -43,7 +48,6 @@ export class Project {
                 }
             });
         });
-
     }
 
     slideInEffect() {
@@ -66,7 +70,7 @@ export class Project {
         targets.forEach(el => observer.observe(el));
     }
 
-    updateNavbar() {
+    navbarScrollReduce() {
         const navbarBrand = document.querySelector("nav.navbar")
         if (window.scrollY > 0) {
             navbarBrand.classList.add("reduce")
@@ -88,15 +92,5 @@ export class Project {
             }
         });
     }
-
-// Helper function to convert hex to RGB values
-    hexToRgb(hex) {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ?
-            `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` :
-            null;
-    }
-
-// Usage
 
 }

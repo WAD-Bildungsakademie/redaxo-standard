@@ -45,11 +45,42 @@ $currentArticle = rex_article::getCurrent();
                             if ($categoryStartArticle->getId() === $currentArticle->getId()) {
                                 $class .= " active";
                             }
-                            ?>
-                            <li class="nav-item">
-                                <a class="<?= $class ?>"
-                                   href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
-                            </li>
+                            $children = $category->getChildren();
+                            if ($children && count($children) > 0) { ?>
+                                <li class="nav-item dropdown">
+                                    <a class="<?= $class ?> dropdown-toggle" data-bs-toggle="dropdown"
+                                       aria-expanded="false"
+                                       href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
+                                    <ul class="dropdown-menu bg-light border-0 rounded-0 shadow">
+                                        <?php foreach ($children as $child) {
+                                        $childStartArticle = $child->getStartArticle();
+                                        if ($childStartArticle) { ?>
+                                        <li><a class="dropdown-item"
+                                               href="<?= $childStartArticle->getUrl() ?>"><?= $child->getName() ?></a>
+                                        <?php }
+                                        } ?>
+                                    </ul>
+                                </li>
+                                <!--
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Dropdown
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                  </ul>
+                                </li>
+                                -->
+                            <?php } else { ?>
+                                <li class="nav-item">
+                                    <a class="<?= $class ?>"
+                                       href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?></a>
+                                </li>
+                            <?php } ?>
+
                             <?php
                         }
                     }
