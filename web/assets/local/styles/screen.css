@@ -12529,7 +12529,7 @@ p {
 }
 
 main {
-  padding-top: 5rem;
+  padding-top: 2.5rem;
   background-color: white;
 }
 main a.smart-action-link {
@@ -12702,7 +12702,7 @@ footer .footer-bottom {
   min-height: 100svh;
   background: linear-gradient(160deg, color-mix(in srgb, var(--bs-primary) 60%, black 40%), color-mix(in srgb, var(--bs-primary) 90%, white 10%));
   overflow: hidden;
-  margin-top: -5rem;
+  margin-top: -2.5rem;
   padding-top: 5rem;
 }
 .module-7bc9e6 .text {
