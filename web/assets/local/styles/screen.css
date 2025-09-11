@@ -12541,9 +12541,6 @@ main a.smart-action-link {
  * Author: Stefan Haack (https://shaack.com)
  * Date: 2024-07-23
  */
-header {
-  border-bottom: 1px solid #dee2e6;
-}
 header nav.navbar {
   transition: background-color 0.3s;
 }
@@ -12562,10 +12559,10 @@ header nav.navbar .nav-item .nav-link {
   border-bottom: 2px solid transparent;
 }
 header nav.navbar .nav-item .nav-link:hover {
-  color: var(--bs-link-hover-color);
+  color: rgba(var(--bs-emphasis-color-rgb), 1);
 }
 header nav.navbar .nav-item .nav-link.active {
-  color: var(--bs-link-hover-color);
+  color: rgba(var(--bs-emphasis-color-rgb), 1);
   border-bottom: 2px solid var(--bs-link-hover-color);
 }
 @media (max-width: 1199.98px) {
@@ -12581,7 +12578,32 @@ header nav.navbar.reduce .navbar-brand img {
   height: 2.8rem;
 }
 header .second-level-nav {
+  border-bottom: 1px solid #dee2e6;
+}
+header .second-level-nav nav {
   padding-top: 5rem;
+}
+header .second-level-nav nav a.second-level-nav-link {
+  color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+}
+header .second-level-nav nav a.second-level-nav-link:hover {
+  color: rgba(var(--bs-emphasis-color-rgb), 0.8);
+  text-decoration: none;
+}
+header .second-level-nav nav a.second-level-nav-link.active {
+  border-bottom: 2px solid var(--bs-link-hover-color);
+  color: rgba(var(--bs-emphasis-color-rgb), 1);
+}
+header .second-level-nav.reduce {
+  border-bottom: none;
+}
+header .second-level-nav.reduce nav {
+  background-color: white;
+  transition: background-color 0.3s;
+}
+header .second-level-nav.reduce nav a.second-level-nav-link {
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 footer {

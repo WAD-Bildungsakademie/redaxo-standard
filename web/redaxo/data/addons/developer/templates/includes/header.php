@@ -14,6 +14,7 @@ if ($serviceCategoryId) {
 }
 $startArticleSlices = rex_article_slice::getSlicesForArticle($categoryStartArticle->getId());
 $currentArticle = rex_article::getCurrent();
+$currentCategory = rex_category::getCurrent();
 ?>
 <header>
     <div class="">
@@ -41,13 +42,14 @@ $currentArticle = rex_article::getCurrent();
                                     </li>
                                 <?php }
                             } ?>
-                            <?php /* TODO Add folding menu */
+                            <?php
                             foreach ($rootCategories as $category) {
                                 if ($category->isOnline() && $category->getId() !== $serviceCategoryId) {
                                     $categoryStartArticle = $category->getStartArticle();
                                     if ($categoryStartArticle) {
                                         $class = "nav-link";
-                                        if ($categoryStartArticle->getId() === $currentArticle->getId()) {
+                                        if ($categoryStartArticle->getId() === $currentArticle->getId() ||
+                                                (rex_category::getCurrent() && in_array($category->getId(), rex_category::getCurrent()->getPathAsArray()))) {
                                             $class .= " active";
                                         }
                                         $children = $category->getChildren();
@@ -65,11 +67,9 @@ $currentArticle = rex_article::getCurrent();
                                 }
                             } ?>
                         </ul>
-
                         <!-- Additional content below navigation - Mobile only -->
                         <div class="mt-2">
                             <div class="px-3 d-xl-none border-top pt-2">
-
                                 <!-- Mobile content -->
                                 <p class="text-muted small mb-2">Mobile additional content</p>
                             </div>
@@ -95,23 +95,29 @@ $currentArticle = rex_article::getCurrent();
                         }
                         if (count($currentChildren) > 0) {
                             ?>
-                            <ul class="list-inline py-2 mb-0">
-                                <?php foreach ($currentChildren as $child) {
-                                    if ($child->isOnline()) {
-                                        $childStartArticle = $child->getStartArticle();
-                                        if ($childStartArticle) {
-                                            $isActive = $childStartArticle->getId() === $currentArticle->getId();
-                                            ?>
-                                            <li class="list-inline-item">
-                                                <a href="<?= $childStartArticle->getUrl() ?>"
-                                                   class="text-decoration-none <?= $isActive ? 'active' : '' ?>">
-                                                    <?= $child->getName() ?>
-                                                </a>
-                                            </li>
-                                        <?php }
-                                    }
-                                } ?>
-                            </ul>
+                            <nav aria-label="Second level navigation">
+                                <ul class="list-inline pb-2 mb-0">
+                                    <?php foreach ($currentChildren as $child) {
+                                        if ($child->isOnline()) {
+                                            $childStartArticle = $child->getStartArticle();
+                                            if ($childStartArticle) {
+                                                $isActive = $childStartArticle->getId() === $currentArticle->getId();
+                                                ?>
+                                                <li class="list-inline-item">
+                                                    <a href="<?= $childStartArticle->getUrl() ?>"
+                                                       class="second-level-nav-link mx-2 pt-1 <?= $isActive ? 'active' : '' ?>">
+                                                        <?= $child->getName() ?>
+                                                    </a>
+                                                </li>
+                                            <?php }
+                                        }
+                                    } ?>
+                                </ul>
+                            </nav>
+                            <?php
+                        } else {
+                            ?>
+                                <nav></nav>
                             <?php
                         }
                     }

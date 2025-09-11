@@ -71,10 +71,13 @@ export class Project {
 
     navbarScrollReduce() {
         const navbarBrand = document.querySelector("nav.navbar")
+        const secondLevelNav = document.querySelector(".second-level-nav")
         if (window.scrollY > 0) {
             navbarBrand.classList.add("reduce")
+            secondLevelNav.classList.add("reduce")
         } else {
             navbarBrand.classList.remove("reduce")
+            secondLevelNav.classList.remove("reduce")
         }
     }
 

@@ -4,9 +4,9 @@
  */
 
 header {
-  border-bottom: 1px solid $gray-300;
   nav.navbar {
     // background-color: wh;
+    // border-bottom: 1px solid $gray-300;
     transition: background-color 0.3s;
     .navbar-brand {
       img {
@@ -23,10 +23,10 @@ header {
         color: $body-color;
         border-bottom: 2px solid transparent;
         &:hover {
-          color: $nav-link-hover-color;
+          color: $navbar-light-active-color;
         }
         &.active {
-          color: $nav-link-hover-color;
+          color: $navbar-light-active-color;
           // add a blue line under the active link
           border-bottom: 2px solid $nav-link-hover-color;
         }
@@ -51,6 +51,37 @@ header {
     }
   }
   .second-level-nav {
-    padding-top: $main-offset;
+    // padding-top: $main-offset;
+    border-bottom: 1px solid $gray-300;
+    nav {
+      padding-top: $main-offset;
+      a.second-level-nav-link {
+        color: $navbar-light-color;
+
+        &:hover {
+          color: $navbar-light-hover-color;
+          text-decoration: none;
+        }
+
+        &.active {
+          border-bottom: 2px solid $nav-link-hover-color;
+          color: $navbar-light-active-color;
+        }
+      }
+
+    }
+    &.reduce {
+      border-bottom: none;
+      nav {
+        // opacity: 0;
+        // transition: opacity 0.3s;
+        background-color: white;
+        transition: background-color 0.3s;
+        a.second-level-nav-link {
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+      }
+    }
   }
 }
