@@ -12753,4 +12753,8 @@ footer .footer-bottom {
   min-width: 0; /* Prevents flex items from overflowing */
 }
 
+.module-f0cba8 .card-text :last-child {
+  margin-bottom: 1rem;
+}
+
 /*# sourceMappingURL=screen.css.map */
