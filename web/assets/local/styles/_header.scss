@@ -71,16 +71,16 @@ header {
 
     }
     &.reduce {
-      border-bottom-color: transparent;
-      transition: border-bottom-color 0.3s;
+      // border-bottom-color: transparent;
+      // transition: border-bottom-color 0.3s;
       nav {
         // opacity: 0;
         // transition: opacity 0.3s;
-        background-color: white;
-        transition: background-color 0.3s;
+        // background-color: white;
+        // transition: background-color 0.3s;
         a.second-level-nav-link {
-          opacity: 0;
-          transition: opacity 0.3s;
+          // opacity: 0;
+          // transition: opacity 0.3s;
         }
       }
     }

@@ -12594,19 +12594,6 @@ header .second-level-nav nav a.second-level-nav-link.active {
   border-bottom: 2px solid var(--bs-link-hover-color);
   color: rgba(var(--bs-emphasis-color-rgb), 1);
 }
-header .second-level-nav.reduce {
-  border-bottom-color: transparent;
-  transition: border-bottom-color 0.3s;
-}
-header .second-level-nav.reduce nav {
-  background-color: white;
-  transition: background-color 0.3s;
-}
-header .second-level-nav.reduce nav a.second-level-nav-link {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
 footer {
   background-color: color-mix(in srgb, var(--bs-primary) 90%, black 10%);
   color: rgba(255, 255, 255, 0.9);

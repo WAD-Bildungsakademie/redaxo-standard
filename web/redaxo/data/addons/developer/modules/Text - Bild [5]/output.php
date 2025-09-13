@@ -18,7 +18,7 @@ if($media) {
     $colImage = '<div class="col-md-' . $split . '"><img src="' . $media->getImageSrc("rex_media_large") . '" class="img-fluid mb-3 slide-in" alt="' . $media->getTitle() . '"/></div>';
 }
 ?>
-<section class="module module-2bd592 <?= $bgGray ? "bg-gray" : "" ?>">
+<section class="module module-2bd592 <?= $bgGray ? "bg-light" : "" ?>">
     <div class="container-fluid max-width-<?= $maxWidth ?>">
         <div class="row align-items-center">
             <?php if($mediaPlacement == 'left'): ?>
