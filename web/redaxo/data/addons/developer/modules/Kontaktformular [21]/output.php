@@ -1,6 +1,7 @@
 <?php
 $yForm = new rex_yform();
 $yForm->setDebug(false); // DEBUG
+/** @noinspection PhpUndefinedConstantInspection */
 $yForm->setObjectparams('form_action', rex_getUrl(REX_ARTICLE_ID, REX_CLANG_ID));
 $yForm->setObjectparams('csrf_protection_error_message', 'Es ist beim Absenden des Formulars ein Fehler aufgetreten, bitte versuchen Sie es erneut.');
 $yForm->setObjectparams('form_class', 'form-horizontal');
