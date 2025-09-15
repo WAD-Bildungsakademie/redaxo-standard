@@ -1,7 +1,6 @@
 <?php
 /**
  * Author: Stefan Haack (https://shaack.com)
- * Date: 2025-07-24
  */
 /** @var rex_article_slice $slice */
 $slice = $this->getCurrentSlice();
