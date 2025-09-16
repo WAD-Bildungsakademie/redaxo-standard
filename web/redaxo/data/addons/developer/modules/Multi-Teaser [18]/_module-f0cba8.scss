@@ -1,7 +1,23 @@
 .module-f0cba8 {
-  .card-text {
-    :last-child {
+  .card {
+
+    padding: 1rem 0;
+
+    .icon {
+      color: var(--bs-primary);
+      font-size: 1.8rem;
+      background-color: var(--bs-primary-bg-subtle);
+      display: inline-block;
+      padding: 0.6rem 1.1rem;
+      border-radius: 50%;
       margin-bottom: 1rem;
+      // text-shadow: 0 0 1px currentColor;
+    }
+
+    .card-text {
+      :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
