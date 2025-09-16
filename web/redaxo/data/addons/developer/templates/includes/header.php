@@ -54,19 +54,47 @@ $currentCategory = rex_category::getCurrent();
                                         }
                                         $children = $category->getChildren();
                                         ?>
-                                        <li class="nav-item">
-                                            <a class="<?= $class ?>"
-                                               href="<?= $categoryStartArticle->getUrl() ?>"><?= $category->getName() ?>
+                                        <li class="nav-item <?= count($children) > 0 ? 'dropdown' : '' ?>">
+                                            <a class="<?= $class ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
+                                               href="<?= $categoryStartArticle->getUrl() ?>"
+                                                    <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="false"' : '' ?>>
+                                                <?= $category->getName() ?>
+                                                <!--
                                                 <?php if (count($children) > 0) { ?>
                                                     <i class="bi bi-caret-down"></i>
                                                 <?php } ?>
+                                                -->
                                             </a>
+                                            <?php if (count($children) > 0) { ?>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="<?= $categoryStartArticle->getUrl() ?>">
+                                                            Übersicht
+                                                        </a>
+                                                    </li>
+                                                    <?php foreach ($children as $child) {
+                                                        if ($child->isOnline()) {
+                                                            $childStartArticle = $child->getStartArticle();
+                                                            if ($childStartArticle) { ?>
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                       href="<?= $childStartArticle->getUrl() ?>">
+                                                                        <?= $child->getName() ?>
+                                                                    </a>
+                                                                </li>
+                                                            <?php }
+                                                        }
+                                                    } ?>
+                                                </ul>
+                                            <?php } ?>
                                         </li>
                                         <?php
                                     }
                                 }
                             } ?>
                         </ul>
+                        <?php /*
                         <!-- Additional content below navigation - Mobile only -->
                         <div class="mt-2">
                             <div class="px-3 d-xl-none border-top pt-2">
@@ -74,6 +102,7 @@ $currentCategory = rex_category::getCurrent();
                                 <p class="text-muted small mb-2">Mobile additional content</p>
                             </div>
                         </div>
+                        */ ?>
                     </div>
                 </div>
             </div>
