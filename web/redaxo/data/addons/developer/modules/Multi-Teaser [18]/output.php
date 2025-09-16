@@ -27,7 +27,7 @@ if($teaserCount % 3 == 0) {
                 <div class="col-12 col-md-<?= $colSize ?> mb-4">
                     <div class="card h-100 shadow border-1 border-light-subtle">
                         <div class="card-body text-center">
-                            <div class="bi bi-<?= $teaser->icon ?> display-4 mb-3"></div>
+                            <div class="bi bi-<?= $teaser->icon ?> icon"></div>
                             <h3 class="card-title mt-0"><?= $teaser->headline ?></h3>
                             <div class="card-text"><?= $teaser->text ?></div>
                         </div>
