@@ -2,6 +2,9 @@
   padding-top: $section-spacing;
   padding-bottom: $section-spacing;
   background-color: white;
+  &:first-child {
+    padding-top: $main-offset * 2;
+  }
   &:last-child {
     padding-bottom: 2.5 * $section-spacing;
   }

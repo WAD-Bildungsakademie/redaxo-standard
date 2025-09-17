@@ -4,6 +4,7 @@
  */
 
 header {
+  background: $light;
   nav.navbar {
     // background-color: wh;
     // border-bottom: 1px solid $gray-300;
@@ -59,9 +60,13 @@ header {
   }
   .second-level-nav {
     // padding-top: $main-offset;
-    border-bottom: 1px solid $gray-200;
+    // border-bottom: 1px solid $gray-200;
     nav {
+      margin-top: -$main-offset;
       padding-top: $main-offset;
+      position: relative;
+      top: $main-offset;
+      background: $light;
       a.second-level-nav-link {
         color: $navbar-light-color;
 

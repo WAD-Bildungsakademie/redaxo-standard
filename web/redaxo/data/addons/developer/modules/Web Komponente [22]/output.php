@@ -6,7 +6,7 @@
 $slice = $this->getCurrentSlice();
 $component = $slice->getValue(1);
 ?>
-<section class="module module-786e0d">
+<section class="module module-786e0d bg-light">
     <div class="container-fluid max-width-xl">
         <?php
         if ($component == "accessibility-contrast-calculator") {

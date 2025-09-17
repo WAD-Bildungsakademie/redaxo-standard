@@ -1,10 +1,6 @@
 <?php
 $v = "2509172011";
-
-// domain values
 $domain = rex_yrewrite::getCurrentDomain();
-
-// current article and slices
 $bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();
 ?>

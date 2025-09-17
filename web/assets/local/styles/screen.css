@@ -12534,7 +12534,6 @@ p {
 }
 
 main {
-  padding-top: 2.5rem;
   background-color: white;
 }
 main a.smart-action-link {
@@ -12546,6 +12545,9 @@ main a.smart-action-link {
  * Author: Stefan Haack (https://shaack.com)
  * Date: 2024-07-23
  */
+header {
+  background: #f8f9fa;
+}
 header nav.navbar {
   transition: background-color 0.3s;
 }
@@ -12589,11 +12591,12 @@ header nav.navbar.reduce {
 header nav.navbar.reduce .navbar-brand img {
   height: 2.8rem;
 }
-header .second-level-nav {
-  border-bottom: 1px solid #e9ecef;
-}
 header .second-level-nav nav {
+  margin-top: -5rem;
   padding-top: 5rem;
+  position: relative;
+  top: 5rem;
+  background: #f8f9fa;
 }
 header .second-level-nav nav a.second-level-nav-link {
   color: rgba(var(--bs-emphasis-color-rgb), 0.65);
@@ -12635,6 +12638,9 @@ footer .footer-bottom {
   padding-top: 4rem;
   padding-bottom: 4rem;
   background-color: white;
+}
+.module:first-child {
+  padding-top: 10rem;
 }
 .module:last-child {
   padding-bottom: 10rem;
