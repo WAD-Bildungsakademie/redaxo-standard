@@ -15,6 +15,13 @@ header {
         transition: height 0.3s;
       }
     }
+    .dropdown-item.active, .dropdown-item:active  {
+      background-color: transparent;
+      color: var(--bs-navbar-active-color);
+      .link-text {
+        border-bottom: 2px solid $nav-link-hover-color;
+      }
+    }
     .nav-item {
       padding: 0.5rem 1rem;
       .nav-link {

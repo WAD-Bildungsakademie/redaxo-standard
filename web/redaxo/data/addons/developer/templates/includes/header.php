@@ -54,7 +54,13 @@ $currentCategory = rex_category::getCurrent();
                                         }
                                         $children = $category->getChildren();
                                         ?>
-                                        <li class="nav-item <?= count($children) > 0 ? 'dropdown' : '' ?>">
+                                        <li class="nav-item d-none d-xl-block <?= count($children) > 0 ? 'dropdown' : '' ?>">
+                                            <a class="<?= $class ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
+                                               href="<?= $categoryStartArticle->getUrl() ?>">
+                                                <?= $category->getName() ?>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item d-xl-none <?= count($children) > 0 ? 'dropdown' : '' ?>">
                                             <a class="<?= $class ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>"
                                                     <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="false"' : '' ?>>
@@ -66,7 +72,7 @@ $currentCategory = rex_category::getCurrent();
                                                 -->
                                             </a>
                                             <?php if (count($children) > 0) { ?>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu border-0 bg-transparent">
                                                     <li>
                                                         <a class="dropdown-item"
                                                            href="<?= $categoryStartArticle->getUrl() ?>">
@@ -76,11 +82,13 @@ $currentCategory = rex_category::getCurrent();
                                                     <?php foreach ($children as $child) {
                                                         if ($child->isOnline()) {
                                                             $childStartArticle = $child->getStartArticle();
-                                                            if ($childStartArticle) { ?>
+                                                            if ($childStartArticle) {
+                                                                $isActive = $childStartArticle->getId() === $currentArticle->getId();
+                                                                ?>
                                                                 <li>
-                                                                    <a class="dropdown-item"
+                                                                    <a class="dropdown-item <?= $isActive ? 'active' : '' ?>"
                                                                        href="<?= $childStartArticle->getUrl() ?>">
-                                                                        <?= $child->getName() ?>
+                                                                        <span class="link-text"><?= $child->getName() ?></span>
                                                                     </a>
                                                                 </li>
                                                             <?php }

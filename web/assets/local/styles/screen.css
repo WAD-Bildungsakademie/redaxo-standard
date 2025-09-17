@@ -12554,6 +12554,13 @@ header nav.navbar .navbar-brand img {
   max-width: 70vw;
   transition: height 0.3s;
 }
+header nav.navbar .dropdown-item.active, header nav.navbar .dropdown-item:active {
+  background-color: transparent;
+  color: var(--bs-navbar-active-color);
+}
+header nav.navbar .dropdown-item.active .link-text, header nav.navbar .dropdown-item:active .link-text {
+  border-bottom: 2px solid var(--bs-link-hover-color);
+}
 header nav.navbar .nav-item {
   padding: 0.5rem 1rem;
 }
