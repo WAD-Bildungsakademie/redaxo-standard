@@ -48,22 +48,24 @@ $currentCategory = rex_category::getCurrent();
                                     $categoryStartArticle = $category->getStartArticle();
                                     if ($categoryStartArticle) {
                                         $class = "nav-link";
+                                        $rootActive = false;
                                         if ($categoryStartArticle->getId() === $currentArticle->getId() ||
                                                 (rex_category::getCurrent() && in_array($category->getId(), rex_category::getCurrent()->getPathAsArray()))) {
                                             $class .= " active";
+                                            $rootActive = true;
                                         }
                                         $children = $category->getChildren();
                                         ?>
                                         <li class="nav-item d-none d-xl-block <?= count($children) > 0 ? 'dropdown' : '' ?>">
-                                            <a class="<?= $class ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
+                                            <a class="<?= $class ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>">
                                                 <?= $category->getName() ?>
                                             </a>
                                         </li>
                                         <li class="nav-item d-xl-none <?= count($children) > 0 ? 'dropdown' : '' ?>">
-                                            <a class="<?= $class ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
+                                            <a class="<?= $class ?> <?= $rootActive ? "show" : "" ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>"
-                                                    <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="false"' : '' ?>>
+                                                    <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="' . ($rootActive ? "true" : "false") . '"' : '' ?>>
                                                 <?= $category->getName() ?>
                                                 <!--
                                                 <?php if (count($children) > 0) { ?>
@@ -72,7 +74,7 @@ $currentCategory = rex_category::getCurrent();
                                                 -->
                                             </a>
                                             <?php if (count($children) > 0) { ?>
-                                                <ul class="dropdown-menu border-0 bg-transparent">
+                                                <ul class="dropdown-menu <?= $rootActive ? "show" : "" ?> border-0 bg-transparent">
                                                     <li>
                                                         <a class="dropdown-item"
                                                            href="<?= $categoryStartArticle->getUrl() ?>">
@@ -163,4 +165,46 @@ $currentCategory = rex_category::getCurrent();
             </div>
         </div>
     </div>
+    <script>
+        // Handle dropdown behavior for mobile navigation (TODO put this in Project.js)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle dropdown toggle behavior for mobile navigation
+            const dropdownToggles = document.querySelectorAll('.navbar-nav .dropdown-toggle');
+
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    // Close all other open dropdowns
+                    dropdownToggles.forEach(function(otherToggle) {
+                        if (otherToggle !== toggle) {
+                            const otherDropdown = otherToggle.nextElementSibling;
+                            if (otherDropdown && otherDropdown.classList.contains('show')) {
+                                otherDropdown.classList.remove('show');
+                                otherToggle.classList.remove('show');
+                                otherToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Also handle Bootstrap's dropdown events
+            const navElement = document.getElementById('navbarNav');
+            if (navElement) {
+                navElement.addEventListener('show.bs.dropdown', function(e) {
+                    // Close all other dropdowns when a new one is about to show
+                    const allDropdowns = navElement.querySelectorAll('.dropdown-menu.show');
+                    allDropdowns.forEach(function(dropdown) {
+                        if (dropdown !== e.target.nextElementSibling) {
+                            dropdown.classList.remove('show');
+                            const toggle = dropdown.previousElementSibling;
+                            if (toggle) {
+                                toggle.classList.remove('show');
+                                toggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </header>
