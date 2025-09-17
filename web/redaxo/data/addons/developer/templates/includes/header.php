@@ -28,10 +28,9 @@ $currentCategory = rex_category::getCurrent();
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse <?= $navPositionLeft ? "" : "justify-content-end" ?>"
-                     id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="d-flex flex-column w-100">
-                        <ul class="navbar-nav <?= $navPositionLeft ? "" : "ms-auto" ?>">
+                        <ul class="navbar-nav <?= $navPositionLeft ? "" : "ms-lg-auto" ?>">
                             <?php /* One pager navigation */ ?>
                             <?php foreach ($startArticleSlices as $slice) {
                                 if ($slice->isOnline() && $slice->getValue(9)) {
