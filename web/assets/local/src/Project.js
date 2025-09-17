@@ -55,7 +55,7 @@ export class Project {
         const dropdownToggles = document.querySelectorAll('.navbar-nav .dropdown-toggle');
 
         dropdownToggles.forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
+            toggle.addEventListener('click', function() {
                 // Close all other open dropdowns
                 dropdownToggles.forEach(function(otherToggle) {
                     if (otherToggle !== toggle) {
