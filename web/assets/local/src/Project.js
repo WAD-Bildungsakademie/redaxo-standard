@@ -9,14 +9,15 @@ import {CoreUtils} from "cm-web-modules/src/utils/CoreUtils.js";
 export class Project {
     constructor() {
         DomUtils.onDocumentReady(() => {
-            const debouncedNavbarScrollReduce = CoreUtils.debounce(this.navbarScrollReduce.bind(this), 10, true)
+            const debouncedNavbarScrollReduce = CoreUtils.debounce(this.reduceNavbarOnScroll.bind(this), 10, true)
             window.addEventListener("scroll", () => {
                 debouncedNavbarScrollReduce()
             })
-            this.navbarScrollReduce()
+            this.reduceNavbarOnScroll()
             this.makeCke5TablesResponsive()
             this.slideInEffect()
             this.transformSmartActionLinks()
+            this.mobileNavigationClickHandling()
             DomUtils.openExternalLinksBlank()
         })
     }
@@ -49,6 +50,46 @@ export class Project {
         });
     }
 
+    mobileNavigationClickHandling() {
+        // Handle dropdown toggle behavior for mobile navigation
+        const dropdownToggles = document.querySelectorAll('.navbar-nav .dropdown-toggle');
+
+        dropdownToggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                // Close all other open dropdowns
+                dropdownToggles.forEach(function(otherToggle) {
+                    if (otherToggle !== toggle) {
+                        const otherDropdown = otherToggle.nextElementSibling;
+                        if (otherDropdown && otherDropdown.classList.contains('show')) {
+                            otherDropdown.classList.remove('show');
+                            otherToggle.classList.remove('show');
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Also handle Bootstrap's dropdown events
+        const navElement = document.getElementById('navbarNav');
+        if (navElement) {
+            navElement.addEventListener('show.bs.dropdown', function(e) {
+                // Close all other dropdowns when a new one is about to show
+                const allDropdowns = navElement.querySelectorAll('.dropdown-menu.show');
+                allDropdowns.forEach(function(dropdown) {
+                    if (dropdown !== e.target.nextElementSibling) {
+                        dropdown.classList.remove('show');
+                        const toggle = dropdown.previousElementSibling;
+                        if (toggle) {
+                            toggle.classList.remove('show');
+                            toggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            });
+        }
+    }
+
     slideInEffect() {
         const targets = document.querySelectorAll('.slide-in, .slide-in-left, .slide-in-right');
         if (!targets.length) return;
@@ -69,7 +110,7 @@ export class Project {
         targets.forEach(el => observer.observe(el));
     }
 
-    navbarScrollReduce() {
+    reduceNavbarOnScroll() {
         const navbarBrand = document.querySelector("nav.navbar")
         const secondLevelNav = document.querySelector(".second-level-nav")
         if (window.scrollY > 0) {

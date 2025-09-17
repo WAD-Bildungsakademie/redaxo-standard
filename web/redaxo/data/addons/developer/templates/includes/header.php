@@ -76,9 +76,9 @@ $currentCategory = rex_category::getCurrent();
                                             <?php if (count($children) > 0) { ?>
                                                 <ul class="dropdown-menu <?= $rootActive ? "show" : "" ?> border-0 bg-transparent">
                                                     <li>
-                                                        <a class="dropdown-item"
+                                                        <a class="dropdown-item <?= $categoryStartArticle->getId() === $currentArticle->getId() ? 'active' : '' ?>"
                                                            href="<?= $categoryStartArticle->getUrl() ?>">
-                                                            Übersicht
+                                                            <span class="link-text">Übersicht</span>
                                                         </a>
                                                     </li>
                                                     <?php foreach ($children as $child) {
@@ -154,10 +154,6 @@ $currentCategory = rex_category::getCurrent();
                                 </ul>
                             </nav>
                             <?php
-                        } else {
-                            ?>
-                                <nav></nav>
-                            <?php
                         }
                     }
                 }
@@ -165,46 +161,4 @@ $currentCategory = rex_category::getCurrent();
             </div>
         </div>
     </div>
-    <script>
-        // Handle dropdown behavior for mobile navigation (TODO put this in Project.js)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Handle dropdown toggle behavior for mobile navigation
-            const dropdownToggles = document.querySelectorAll('.navbar-nav .dropdown-toggle');
-
-            dropdownToggles.forEach(function(toggle) {
-                toggle.addEventListener('click', function(e) {
-                    // Close all other open dropdowns
-                    dropdownToggles.forEach(function(otherToggle) {
-                        if (otherToggle !== toggle) {
-                            const otherDropdown = otherToggle.nextElementSibling;
-                            if (otherDropdown && otherDropdown.classList.contains('show')) {
-                                otherDropdown.classList.remove('show');
-                                otherToggle.classList.remove('show');
-                                otherToggle.setAttribute('aria-expanded', 'false');
-                            }
-                        }
-                    });
-                });
-            });
-
-            // Also handle Bootstrap's dropdown events
-            const navElement = document.getElementById('navbarNav');
-            if (navElement) {
-                navElement.addEventListener('show.bs.dropdown', function(e) {
-                    // Close all other dropdowns when a new one is about to show
-                    const allDropdowns = navElement.querySelectorAll('.dropdown-menu.show');
-                    allDropdowns.forEach(function(dropdown) {
-                        if (dropdown !== e.target.nextElementSibling) {
-                            dropdown.classList.remove('show');
-                            const toggle = dropdown.previousElementSibling;
-                            if (toggle) {
-                                toggle.classList.remove('show');
-                                toggle.setAttribute('aria-expanded', 'false');
-                            }
-                        }
-                    });
-                });
-            }
-        });
-    </script>
 </header>
