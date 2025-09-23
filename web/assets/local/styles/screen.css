@@ -12772,6 +12772,7 @@ footer .footer-bottom {
 }
 
 .module-f0cba8 .card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   padding: 1rem 0;
 }
 .module-f0cba8 .card .icon {
@@ -12785,6 +12786,9 @@ footer .footer-bottom {
 }
 .module-f0cba8 .card .card-text :last-child {
   margin-bottom: 0;
+}
+.module-f0cba8 a:active .card, .module-f0cba8 a:focus .card {
+  box-shadow: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=screen.css.map */

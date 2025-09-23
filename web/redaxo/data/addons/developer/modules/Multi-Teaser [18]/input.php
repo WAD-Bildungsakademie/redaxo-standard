@@ -12,6 +12,7 @@ echo MForm::factory()
                     ->addTextField('icon', ['label' => 'Icon'], "question-circle-fill")
                     ->addTextField('headline', ['label' => 'Überschrift'])
                     ->addTextAreaField('text', ['label' => 'Text', 'class' => 'cke5-editor', 'data-lang' => \Cke5\Utils\Cke5Lang::getUserLang(), 'data-content-lang' => \Cke5\Utils\Cke5Lang::getOutputLang(), 'data-profile' => 'default'])
+                    ->addLinkField('link', ['label' => 'Link'])
             ),
         true,
         true,
