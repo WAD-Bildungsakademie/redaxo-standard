@@ -1,5 +1,9 @@
 <?php
-$v = "2509172011";
+/**
+ * Author: Stefan Haack (https://shaack.com)
+ * LICENSE MIT
+ */
+$v = "2509231425";
 $domain = rex_yrewrite::getCurrentDomain();
 $bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();
