@@ -58,7 +58,7 @@ $currentCategory = rex_category::getCurrent();
                                         <li class="nav-item d-none d-xl-block <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>">
                                             <a class="<?= $class ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>">
-                                                <?= $category->getName() ?> <?= count($children) ?>
+                                                <?= $category->getName() ?>
                                             </a>
                                         </li>
                                         <li class="nav-item d-xl-none">
@@ -66,11 +66,6 @@ $currentCategory = rex_category::getCurrent();
                                                href="<?= $categoryStartArticle->getUrl() ?>"
                                                     <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="' . ($rootActive ? "true" : "false") . '"' : '' ?>>
                                                 <?= $category->getName() ?>
-                                                <!--
-                                                <?php if (count($children) > 0) { ?>
-                                                    <i class="bi bi-caret-down"></i>
-                                                <?php } ?>
-                                                -->
                                             </a>
                                             <?php if (count($children) > 0) { ?>
                                                 <ul class="dropdown-menu <?= $rootActive ? "show" : "" ?> border-0 bg-transparent">
