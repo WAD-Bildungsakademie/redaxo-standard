@@ -7,7 +7,7 @@ $slice = $this->getCurrentSlice();
 $text = $slice->getValue(3);
 $bgGray = $slice->getValue(8);
 ?>
-<section class="module module-216e58 <?= $bgGray ? "bg-gray" : "" ?>">
+<section class="module module-216e58 <?= $bgGray ? "bg-light" : "" ?>">
     <div class="container-fluid max-width-xl">
         <div class="max-width-md mx-auto"><?= $text ?></div>
     </div>

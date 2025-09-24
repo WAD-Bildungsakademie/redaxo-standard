@@ -17,6 +17,7 @@ export class Project {
             this.makeCke5TablesResponsive()
             this.slideInEffect()
             this.transformSmartActionLinks()
+            this.addSmartLinkIcons()
             this.mobileNavigationClickHandling()
             DomUtils.openExternalLinksBlank()
         })
@@ -134,6 +135,51 @@ export class Project {
                 link.classList.add('smart-action-link');
             }
         });
+    }
+
+    addSmartLinkIcons() {
+        const elements = document.querySelectorAll('main a')
+        for (const element of elements) {
+            this.createSmartLinkIcon(element)
+        }
+    }
+
+    createSmartLinkIcon(element) {
+        // only text links
+        if(element.innerText !== element.innerHTML || element.classList.contains('no-smart-link')) {
+            return
+        }
+        // check for button syntax with square brackets
+        if (element.innerText.startsWith('[') && element.innerText.endsWith(']')) {
+            element.classList.add('btn', 'btn-primary', 'px-4')
+            element.innerText = element.innerText.slice(1, -1)
+            return
+        }
+        // email and phone?
+        let icon
+        if (element.href.startsWith('tel:')) {
+            icon = "telephone"
+        } else if (element.href.startsWith('mailto:')) {
+            icon = "envelope"
+        } else if (DomUtils.isExternalLink(element)) {
+            icon = "box-arrow-up-right"
+        } else if (this.isPdfLink(element)) {
+            icon = "filetype-pdf"
+        } else if (this.isOtherFileLink(element)) {
+            icon = "file-earmark"
+        }
+        if (icon) {
+            // console.log("icon", icon)
+            element.innerHTML = element.innerText.trim() + `<i class='ms-1 bi bi-${icon}'></i>`
+        }
+    }
+
+    isPdfLink(link) {
+        return link.href.toLowerCase().endsWith('.pdf');
+    }
+
+    isOtherFileLink(link) {
+        return link.href.toLowerCase().match(/\.(docx?|xlsx?|pptx?|xlt|txt|csv|zip|svg|jpg|jpeg|png|gif|mp3|wav|ogg|mp4|avi|mov)$/) !== null;
     }
 
 }
