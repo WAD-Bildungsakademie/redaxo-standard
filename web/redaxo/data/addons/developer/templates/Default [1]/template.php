@@ -3,7 +3,7 @@
  * Author: Stefan Haack (https://shaack.com)
  * LICENSE MIT
  */
-$v = "2509231425";
+$v = "2509242351";
 $domain = rex_yrewrite::getCurrentDomain();
 $bodyClass = "bg-primary-darker";
 $cookieSettings = new BootstrapCookieConsentSettings();

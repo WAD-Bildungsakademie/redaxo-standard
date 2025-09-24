@@ -55,13 +55,13 @@ $currentCategory = rex_category::getCurrent();
                                         }
                                         $children = $category->getChildren();
                                         ?>
-                                        <li class="nav-item d-none d-xl-block <?= count($children) > 0 ? 'dropdown' : '' ?>">
+                                        <li class="nav-item d-none d-xl-block <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>">
                                             <a class="<?= $class ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>">
-                                                <?= $category->getName() ?>
+                                                <?= $category->getName() ?> <?= count($children) ?>
                                             </a>
                                         </li>
-                                        <li class="nav-item d-xl-none <?= count($children) > 0 ? 'dropdown' : '' ?>">
+                                        <li class="nav-item d-xl-none">
                                             <a class="<?= $class ?> <?= $rootActive ? "show" : "" ?> <?= count($children) > 0 ? 'dropdown-toggle' : '' ?>"
                                                href="<?= $categoryStartArticle->getUrl() ?>"
                                                     <?= count($children) > 0 ? 'data-bs-toggle="dropdown" role="button" aria-expanded="' . ($rootActive ? "true" : "false") . '"' : '' ?>>
@@ -116,10 +116,10 @@ $currentCategory = rex_category::getCurrent();
                 </div>
             </div>
         </nav>
-        <!-- Additional content below navbar - Desktop only -->
     </div>
+    <!-- Additional content below navbar - Desktop only -->
     <div class="d-none d-xl-block bg-light second-level-nav">
-        <div class="container-fluid max-width-xxl">
+        <!-- <div class="container-fluid max-width-xxl"> -->
             <div class="text-center">
                 <?php
                 if (rex_category::getCurrent()) {
@@ -158,6 +158,6 @@ $currentCategory = rex_category::getCurrent();
                 }
                 ?>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </header>
