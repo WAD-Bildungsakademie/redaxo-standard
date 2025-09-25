@@ -12495,19 +12495,19 @@ a:hover .icon-animate {
 }
 
 main {
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 h1, .h1 {
   font-family: "Inter", sans-serif;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
 }
 
 h2, .h2 {
   font-family: "Inter", sans-serif;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   line-height: 1.2;
   font-weight: 700;
@@ -12515,7 +12515,7 @@ h2, .h2 {
 
 h3, .h3 {
   font-family: "Inter", sans-serif;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
   line-height: 1.2;
   font-weight: 700;
@@ -12523,7 +12523,7 @@ h3, .h3 {
 
 h4, .h4 {
   font-family: "Inter", sans-serif;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
   line-height: 1.3;
   font-weight: 700;
