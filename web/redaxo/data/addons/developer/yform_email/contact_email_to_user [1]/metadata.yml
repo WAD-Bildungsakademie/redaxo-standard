@@ -1,0 +1,7 @@
+name: contact_email_to_user
+mail_from: kontakt@regioservice-sachsen.de
+mail_from_name: 'Regioservice Sachsen'
+mail_reply_to: kontakt@regioservice-sachsen.de
+mail_reply_to_name: 'Regioservice Sachsen'
+subject: 'Vielen Dank für Ihre Kontaktaufnahme'
+attachments: ''
