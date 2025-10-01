@@ -1,0 +1,17 @@
+.module-form {
+  .alert-danger {
+    // border: none;
+    margin-bottom: 1.5rem;
+    box-shadow: $box-shadow-sm;
+    ul {
+      margin-bottom: 0;
+      padding-left: 0.5rem;
+      li {
+        list-style: none;
+      }
+    }
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}

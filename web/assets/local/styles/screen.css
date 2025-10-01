@@ -12649,6 +12649,21 @@ footer .footer-bottom {
   background-color: rgb(235.9526315789, 238.55, 241.1473684211);
 }
 
+.module-form .alert-danger {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0.1rem 0.15rem rgba(0, 0, 0, 0.15);
+}
+.module-form .alert-danger ul {
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+}
+.module-form .alert-danger ul li {
+  list-style: none;
+}
+.module-form .form-group {
+  margin-bottom: 1rem;
+}
+
 /**
  * Author: Stefan Haack (https://shaack.com)
  * Date: 2025-08-12
