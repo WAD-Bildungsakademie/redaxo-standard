@@ -8,17 +8,20 @@ $yForm->setObjectparams('csrf_protection_error_message', 'Es ist beim Absenden d
 // $yForm->setObjectparams('form_wrap_class', 'form-group');
 $yForm->setObjectparams('real_field_names', true);
 
-$yForm->setValueField('text', ['name', 'Name *', '', '', 'no_db']);
-$yForm->setValidateField('empty', ['name', 'Bitte geben Sie Ihren Namen ein']);
-$yForm->setValueField('email', ['email', 'E-Mail *', '', '', 'no_db']);
+$yForm->setValueField('text', ['name', 'Name', '', '', 'no_db']);
+$yForm->setValueField('email', ['email', 'E-Mail-Adresse *', '', '', 'no_db']);
 $yForm->setValidateField('type', ['email', 'email', 'Bitte geben Sie eine gültige E-Mail-Adresse ein']);
 $yForm->setValidateField('empty', ['email', 'Bitte geben Sie Ihre E-Mail-Adresse ein']);
-$yForm->setValueField('textarea', ['message', 'Nachricht *', '', '', 'no_db']);
-$yForm->setValidateField('empty', ['message', 'Bitte geben Sie Ihre Nachricht ein']);
+$yForm->setValueField('textarea', ['message', 'Nachricht', '', '', 'no_db']);
+// $yForm->setValidateField('empty', ['message', 'Bitte geben Sie Ihre Nachricht ein']);
 /*
 $yForm->setValueField('checkbox', ['privacy', 'Ich akzeptiere die Datenschutzerklärung *', '0', '1', 'no_db']);
 $yForm->setValidateField('empty', ['privacy', 'Bitte akzeptieren Sie die Datenschutzerklärung']);
 */
+$articleDatenschutzerklaerung = rex_article::get(ShRexMetaInfos::getValue("article_privacy_policy"));
+$yForm->setValueField('html', ['html', '<p>Die mit einem Sternchen (*) gekennzeichneten Felder sind Pflichtfelder 
+    und müssen ausgefüllt werden. Bei der Übermittlung des Formulars gilt unsere <a target="_blank" href="' .
+        $articleDatenschutzerklaerung->getUrl() . '">Datenschutzerklärung</a>.</p>']);
 
 // $yForm->setActionField('db', ['rex_contact_form']);
 $yForm->setActionField("tpl2email", ["contact_email_to_user", "email"]);
