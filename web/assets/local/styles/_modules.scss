@@ -9,7 +9,7 @@
     padding-bottom: 2.5 * $section-spacing;
   }
   &.bg-gray {
-    background-color: lighten($gray-200, 1%);
+    background-color: $gray;
   }
 }
 

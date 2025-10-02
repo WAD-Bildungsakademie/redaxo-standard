@@ -1,4 +1,13 @@
 <?php
+/**
+ * Author: Stefan Haack (https://shaack.com)
+ */
+/** @var rex_article_slice $slice */
+$slice = $this->getCurrentSlice();
+$textPre = $slice->getValue(1);
+$textPost = $slice->getValue(2);
+
+
 $yForm = new rex_yform();
 $yForm->setDebug(false); // DEBUG
 /** @noinspection PhpUndefinedConstantInspection */
@@ -26,15 +35,21 @@ $yForm->setValueField('html', ['html', '<p>Die mit einem Sternchen (*) gekennzei
 // $yForm->setActionField('db', ['rex_contact_form']);
 $yForm->setActionField("tpl2email", ["contact_email_to_user", "email"]);
 $yForm->setActionField("tpl2email", ["contact_email_to_operator", ShRexMetaInfos::getValue("contact_email")]);
-$yForm->setActionField('showtext', ["<p>Vielen Dank für Ihre Nachricht.</p><p>Wir werden uns zeitnah bei Ihnen melden.</p>", "", "", 1]);
 
 // TODO See: web/redaxo/src/addons/yform/docs/02_email.md
 
-// echo $yForm->getForm();
+$formHtml = $yForm->getForm();
 
 ?>
-<section class="module module-form module-c3a99a bg-light">
+<section class="module module-form module-c3a99a bg-gray">
     <div class="container-fluid max-width-md">
-        <?= $yForm->getForm(); ?>
+        <?php
+            if($formHtml) {
+                echo $textPre;
+                echo $formHtml;
+            } else {
+                echo $textPost;
+            }
+        ?>
     </div>
 </section>

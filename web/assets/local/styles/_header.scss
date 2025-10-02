@@ -61,18 +61,20 @@ header {
   .second-level-nav {
     // padding-top: $main-offset;
     // border-bottom: 1px solid $gray-200;
+    padding-top: 0.5rem;
+    background-color: $gray;
     nav {
       margin-top: -$main-offset;
       padding-top: $main-offset;
       position: relative;
       top: $main-offset;
       background: $light;
+      background-color: $gray;
       a.second-level-nav-link {
         color: $navbar-light-color;
-
+        text-decoration: none;
         &:hover {
           color: $navbar-light-hover-color;
-          text-decoration: none;
         }
 
         &.active {

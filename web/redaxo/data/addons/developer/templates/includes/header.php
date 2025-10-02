@@ -113,7 +113,7 @@ $currentCategory = rex_category::getCurrent();
         </nav>
     </div>
     <!-- Additional content below navbar - Desktop only -->
-    <div class="d-none d-xl-block bg-light second-level-nav">
+    <div class="d-none d-xl-block second-level-nav">
         <!-- <div class="container-fluid max-width-xxl"> -->
             <div class="text-center">
                 <?php

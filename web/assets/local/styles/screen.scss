@@ -3,6 +3,7 @@
 @import "variables"; // set values for further bootstrap variables
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss"; // include bootstrap
 @import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+@import "bootstrap-overrides";
 @import "utils"; // my own utils, small helper classes, mixins
 @import "fx"; // effects
 @import "typography"; // set the font-family, font-size, line-height, etc.
