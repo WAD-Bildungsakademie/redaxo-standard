@@ -1,0 +1,57 @@
+services:
+  nginx:
+    image: docker.io/library/nginx:alpine
+    container_name: ${PROJECT_PREFIX}-nginx
+    ports:
+      - "80:80"
+#      - "443:443"
+    volumes:
+      - ./volumes/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./volumes/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ../web:/var/www/redaxo-standard:ro
+#      - certbot_certs:/etc/letsencrypt:ro
+#      - certbot_www:/var/www/certbot:ro
+    restart: unless-stopped
+    depends_on:
+      - php82_fpm
+    networks:
+      - web
+
+  php82_fpm:
+    image: docker.io/library/php:8.2-fpm-alpine
+    container_name: php82_fpm
+    volumes:
+      - ../web:/var/www/redaxo-standard
+#      - ./php/php82.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+    networks:
+      - web
+      - backend
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: ${PROJECT_PREFIX}-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./volumes/log/mysql:/var/log/mysql
+      - ./volumes/data:/var/lib/mysql
+      - ./volumes/share:/mnt/share
+    networks:
+      - backend
+
+  mailserver:
+    container_name: ${PROJECT_PREFIX}-mailserver
+    ports:
+      - "1025:1025" # Expose fake SMTP server on port 1025
+      - "8025:8025" # Web interface for SMTP
+    image: "mailhog/mailhog"
+    networks:
+      - backend
+
+networks:
+  web:
+  backend:
