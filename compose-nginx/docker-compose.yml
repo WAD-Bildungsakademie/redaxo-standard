@@ -4,14 +4,13 @@ services:
     image: docker.io/library/nginx:alpine
     container_name: ${PROJECT_PREFIX}-nginx
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./volumes/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./volumes/nginx/conf.d:/etc/nginx/conf.d:ro
       - ../web:/var/www/redaxo-standard:ro
-#      - certbot_certs:/etc/letsencrypt:ro
-#      - certbot_www:/var/www/certbot:ro
+      - ./volumes/share/certificate:/etc/nginx/ssl:ro
     restart: unless-stopped
     depends_on:
       - php82_fpm
