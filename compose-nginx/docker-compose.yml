@@ -13,15 +13,15 @@ services:
       - ./volumes/share/certificate:/etc/nginx/ssl:ro
     restart: unless-stopped
     depends_on:
-      - php82_fpm
+      - php83_fpm
     networks:
       - web
 
-  php82_fpm:
+  php83_fpm:
     build:
       context: .
       dockerfile: php.Dockerfile
-    container_name: ${PROJECT_PREFIX}-php82_fpm
+    container_name: ${PROJECT_PREFIX}-php83_fpm
     volumes:
       - ../web:/var/www/redaxo-standard
     networks:

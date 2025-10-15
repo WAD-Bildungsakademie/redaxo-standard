@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'yakamara/yform',
-        'pretty_version' => '5.0.0',
-        'version' => '5.0.0.0',
-        'reference' => '6d54240e45850f599c5712eb2a9a4f791f453457',
+        'pretty_version' => '5.0.1',
+        'version' => '5.0.1.0',
+        'reference' => 'c3c0b4ae1824831d5b2fa545ca291ba4286444f1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             ),
         ),
         'yakamara/yform' => array(
-            'pretty_version' => '5.0.0',
-            'version' => '5.0.0.0',
-            'reference' => '6d54240e45850f599c5712eb2a9a4f791f453457',
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'reference' => 'c3c0b4ae1824831d5b2fa545ca291ba4286444f1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

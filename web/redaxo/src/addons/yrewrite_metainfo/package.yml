@@ -1,15 +1,16 @@
 package: yrewrite_metainfo
-version: "2.3.0"
+version: "3.0.0"
 author: Friends of REDAXO
 supportpage: https://github.com/FriendsOfRedaxo/yrewrite_metainfo/
 
 requires:
     php:
-        version: "^8.3"
+        version: "^8.2"
     redaxo: ^5.19
     packages:
         yrewrite: "^2"
         yform: ">=4,<6"
+        yform_field: ">=2.11.0,<4"
 
 conflicts:
     packages:

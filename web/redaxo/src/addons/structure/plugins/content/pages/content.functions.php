@@ -2,7 +2,7 @@
 
 assert(isset($context) && $context instanceof rex_context);
 assert(isset($ctype) && is_int($ctype));
-assert(isset($categoryStartArticle) && $categoryStartArticle instanceof rex_sql);
+assert(isset($article) && $article instanceof rex_sql);
 assert(isset($categoryId) && is_int($categoryId));
 assert(isset($articleId) && is_int($articleId));
 
@@ -18,14 +18,14 @@ $onclickApiFields = static function ($hiddenFields) {
     return 'onclick="$(this.form).append(\'' . rex_escape($hiddenFields) . '\')"';
 };
 
-$isStartpage = 1 == $categoryStartArticle->getValue('startarticle');
+$isStartpage = 1 == $article->getValue('startarticle');
 // --------------------------------------------------- ZUM STARTARTICLE MACHEN START
 if ($user->hasPerm('article2startarticle[]')) {
     $panel = '<fieldset>';
 
     $panelClass = 'default';
     $buttons = '';
-    if (!$isStartpage && 0 == $categoryStartArticle->getValue('parent_id')) {
+    if (!$isStartpage && 0 == $article->getValue('parent_id')) {
         $panelClass = 'info';
 
         $formElements = [];
@@ -112,7 +112,7 @@ if (!$isStartpage && $user->hasPerm('article2category[]')) {
 // --------------------------------------------------- IN KATEGORIE UMWANDELN END
 
 // --------------------------------------------------- IN ARTIKEL UMWANDELN START
-if ($isStartpage && $user->hasPerm('article2category[]') && $user->getComplexPerm('structure')->hasCategoryPerm($categoryStartArticle->getValue('parent_id'))) {
+if ($isStartpage && $user->hasPerm('article2category[]') && $user->getComplexPerm('structure')->hasCategoryPerm($article->getValue('parent_id'))) {
     $sql = rex_sql::factory();
     $sql->setQuery('SELECT pid FROM ' . rex::getTablePrefix() . 'article WHERE parent_id=? LIMIT 1', [$articleId]);
     $emptyCategory = 0 == $sql->getRows();
@@ -328,7 +328,7 @@ if ($user->hasPerm('copyArticle[]')) {
 // --------------------------------------------------- ARTIKEL KOPIEREN ENDE
 
 // --------------------------------------------------- KATEGORIE/STARTARTIKEL VERSCHIEBEN START
-if ($isStartpage && $user->hasPerm('moveCategory[]') && $user->getComplexPerm('structure')->hasCategoryPerm($categoryStartArticle->getValue('parent_id'))) {
+if ($isStartpage && $user->hasPerm('moveCategory[]') && $user->getComplexPerm('structure')->hasCategoryPerm($article->getValue('parent_id'))) {
     $moveA = new rex_category_select(false, false, true, !$user->getComplexPerm('structure')->hasMountPoints());
     $moveA->setId('category_id_new');
     $moveA->setName('category_id_new');
